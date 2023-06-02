@@ -21,9 +21,11 @@ import (
 	"strings"
 )
 
-// Valid returns successful if code is a valid ISO 4217
-// currency code. Example: USD
-func Valid(code string) bool {
-	_, ok := currencyCodes[strings.ToUpper(code)]
-	return ok
+// Lookup returns a CurrencyCode when code is a valid ISO 4217 code
+// and a boolean.
+//
+// Example: "USD"
+func Lookup(code string) (CurrencyCode, bool) {
+	cc, exists := lookupTable[strings.ToUpper(code)]
+	return cc, exists
 }

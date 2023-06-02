@@ -26,8 +26,15 @@ import (
 )
 
 func TestValidate(t *testing.T) {
-	assert.True(t, iso4217.Valid("USD"))
-	assert.True(t, iso4217.Valid("eur"))
-	assert.False(t, iso4217.Valid(""))
-	assert.False(t, iso4217.Valid("QZA"))
+	_, exists := iso4217.Lookup("USD")
+	assert.True(t, exists)
+
+	_, exists = iso4217.Lookup("eur")
+	assert.True(t, exists)
+
+	_, exists = iso4217.Lookup("")
+	assert.False(t, exists)
+
+	_, exists = iso4217.Lookup("QZA")
+	assert.False(t, exists)
 }

@@ -47,9 +47,9 @@ import (
 
 var (
 	downloadUrl    = "https://datahub.io/core/currency-codes/r/codes-all.json"
-	outputFilename = filepath.Join("internal", "iso4217", "iso4217.go")
+	outputFilename = filepath.Join("iso4217.go")
 
-	windowsQuoteReplacer = strings.NewReplacer(`’`, `'`, `’`, `'`, `“`, `"`, `”`, `"`)
+	charCleaner = strings.NewReplacer(`"`, ``, `’`, `'`, `’`, `'`, `“`, `"`, `”`, `"`, `\`, ``)
 )
 
 // {"AlphabeticCode": "AFN", "Currency": "Afghani", ... }
@@ -86,6 +86,19 @@ func main() {
 
 // Generated on %s by %s, any modifications will be overwritten
 package iso4217
+
+type CurrencyCode struct {
+    Code, Name string
+}
+
+func (cc CurrencyCode) String() string {
+    return cc.Code
+}
+
+func (cc CurrencyCode) Valid() bool {
+    _, exists := Lookup(cc.Code)
+    return exists
+}
 `, when, who.Username)
 
 	// Download certs
@@ -104,20 +117,34 @@ package iso4217
 	cs := make(map[string]bool, 150)
 
 	// Write countries to source code
-	fmt.Fprintln(&buf, "var currencyCodes = map[string]bool{")
+	var varBuffer bytes.Buffer
+	fmt.Fprintln(&varBuffer, "var (")
+
+	var lookupBuffer bytes.Buffer
+	fmt.Fprintln(&lookupBuffer, "var lookupTable = map[string]CurrencyCode{")
+
 	for i := range currencies {
 		code, name := currencies[i].Code, currencies[i].Name
 		if code == "" || name == "" {
 			fmt.Printf("SKIPPING: code=%q currency=%q\n", code, name)
 			continue
 		}
-		name = windowsQuoteReplacer.Replace(name)
+		name = charCleaner.Replace(name)
 		if _, exists := cs[code]; !exists {
 			cs[code] = true // mark as seen
-			fmt.Fprintf(&buf, fmt.Sprintf(`"%s": true, // %s`+"\n", code, name))
+
+			fmt.Fprintf(&varBuffer, fmt.Sprintf(`  %s = CurrencyCode{Code: "%s", Name: "%s"}`+"\n", code, code, name))
+			// fmt.Fprintf(&varBuffer, fmt.Sprintf(`  %s CurrencyCode = "%s" // %s`+"\n", code, code, name))
+			fmt.Fprintf(&lookupBuffer, fmt.Sprintf(`"%s": %s, // %s`+"\n", code, code, name))
 		}
 	}
-	fmt.Fprintln(&buf, "}")
+	fmt.Fprintln(&varBuffer, ")")
+	fmt.Fprintln(&lookupBuffer, "}")
+
+	// Add code to file
+	buf.Write(varBuffer.Bytes())
+	buf.WriteString("\n")
+	buf.Write(lookupBuffer.Bytes())
 
 	// format source code and write file
 	out, err := format.Source(buf.Bytes())
