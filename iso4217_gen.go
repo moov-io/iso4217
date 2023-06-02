@@ -39,7 +39,6 @@ import (
 	"net/http"
 	"os"
 	"os/user"
-	"path/filepath"
 	"runtime"
 	"strings"
 	"time"
@@ -47,7 +46,7 @@ import (
 
 var (
 	downloadUrl    = "https://datahub.io/core/currency-codes/r/codes-all.json"
-	outputFilename = filepath.Join("iso4217.go")
+	outputFilename = "iso4217.go"
 
 	charCleaner = strings.NewReplacer(`"`, ``, `’`, `'`, `’`, `'`, `“`, `"`, `”`, `"`, `\`, ``)
 )
