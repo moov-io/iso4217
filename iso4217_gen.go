@@ -40,6 +40,7 @@ import (
 	"os"
 	"os/user"
 	"runtime"
+	"strconv"
 	"strings"
 	"time"
 )
@@ -88,7 +89,8 @@ func main() {
 package iso4217
 
 type CurrencyCode struct {
-    Code, Name, MicroUnit string
+    Code, Name    string
+    DecimalPlaces int
 }
 
 func (cc CurrencyCode) String() string {
@@ -134,7 +136,16 @@ func (cc CurrencyCode) Valid() bool {
 		if _, exists := cs[code]; !exists {
 			cs[code] = true // mark as seen
 
-			fmt.Fprintf(&varBuffer, fmt.Sprintf(`  %s = CurrencyCode{Code: "%s", Name: "%s", MicroUnit: "%s"}`+"\n", code, code, name, microunit))
+			decimalPlaces := -1
+			if microunit != "-" {
+				d, err := strconv.Atoi(microunit)
+				if err != nil {
+					log.Fatalf("error while parsing currency micro unit: %v", err)
+				}
+				decimalPlaces = d
+			}
+
+			fmt.Fprintf(&varBuffer, fmt.Sprintf(`  %s = CurrencyCode{Code: "%s", Name: "%s", DecimalPlaces: %d}`+"\n", code, code, name, decimalPlaces))
 			// fmt.Fprintf(&varBuffer, fmt.Sprintf(`  %s CurrencyCode = "%s" // %s`+"\n", code, code, name))
 			fmt.Fprintf(&lookupBuffer, fmt.Sprintf(`"%s": %s, // %s`+"\n", code, code, name))
 		}
