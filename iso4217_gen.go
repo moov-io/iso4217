@@ -53,8 +53,9 @@ var (
 
 // {"AlphabeticCode": "AFN", "Currency": "Afghani", ... }
 type currency struct {
-	Code string `json:"AlphabeticCode"`
-	Name string `json:"Currency"`
+	Code      string `json:"AlphabeticCode"`
+	Name      string `json:"Currency"`
+	MicroUnit string `json:"MinorUnit"`
 }
 
 func main() {
@@ -87,7 +88,7 @@ func main() {
 package iso4217
 
 type CurrencyCode struct {
-    Code, Name string
+    Code, Name, MicroUnit string
 }
 
 func (cc CurrencyCode) String() string {
@@ -123,18 +124,19 @@ func (cc CurrencyCode) Valid() bool {
 	fmt.Fprintln(&lookupBuffer, "var lookupTable = map[string]CurrencyCode{")
 
 	for i := range currencies {
-		code, name := currencies[i].Code, currencies[i].Name
-		if code == "" || name == "" {
-			fmt.Printf("SKIPPING: code=%q currency=%q\n", code, name)
+		code, name, microunit := currencies[i].Code, currencies[i].Name, currencies[i].MicroUnit
+		if code == "" || name == "" || microunit == "" {
+			fmt.Printf("SKIPPING: code=%q currency=%q microunit=%q\n", code, name, microunit)
 			continue
 		}
 		name = charCleaner.Replace(name)
+		microunit = charCleaner.Replace(microunit)
 		if _, exists := cs[code]; !exists {
 			cs[code] = true // mark as seen
 
-			fmt.Fprintf(&varBuffer, fmt.Sprintf(`  %s = CurrencyCode{Code: "%s", Name: "%s"}`+"\n", code, code, name))
+			fmt.Fprintf(&varBuffer, fmt.Sprintf(`  %s = CurrencyCode{Code: "%s", Name: "%s", MicroUnit: "%s"}`+"\n", code, code, name, microunit))
 			// fmt.Fprintf(&varBuffer, fmt.Sprintf(`  %s CurrencyCode = "%s" // %s`+"\n", code, code, name))
-			fmt.Fprintf(&lookupBuffer, fmt.Sprintf(`"%s": %s, // %s`+"\n", code, code, name))
+			fmt.Fprintf(&lookupBuffer, fmt.Sprintf(`"%s": %s, // %s // %s`+"\n", code, code, name, microunit))
 		}
 	}
 	fmt.Fprintln(&varBuffer, ")")
