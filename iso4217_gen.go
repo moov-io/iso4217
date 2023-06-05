@@ -136,7 +136,7 @@ func (cc CurrencyCode) Valid() bool {
 
 			fmt.Fprintf(&varBuffer, fmt.Sprintf(`  %s = CurrencyCode{Code: "%s", Name: "%s", MicroUnit: "%s"}`+"\n", code, code, name, microunit))
 			// fmt.Fprintf(&varBuffer, fmt.Sprintf(`  %s CurrencyCode = "%s" // %s`+"\n", code, code, name))
-			fmt.Fprintf(&lookupBuffer, fmt.Sprintf(`"%s": %s, // %s // %s`+"\n", code, code, name, microunit))
+			fmt.Fprintf(&lookupBuffer, fmt.Sprintf(`"%s": %s, // %s`+"\n", code, code, name))
 		}
 	}
 	fmt.Fprintln(&varBuffer, ")")
