@@ -56,7 +56,7 @@ var (
 type currency struct {
 	Code      string `json:"AlphabeticCode"`
 	Name      string `json:"Currency"`
-	MicroUnit string `json:"MinorUnit"`
+	MinorUnit string `json:"MinorUnit"`
 }
 
 func main() {
@@ -89,7 +89,10 @@ func main() {
 package iso4217
 
 type CurrencyCode struct {
-    Code, Name    string
+    Code, Name string
+
+    // DecimalPlaces represents the integer value of a currency's minor unit.
+	// DecimalPlaces is 0 if the currency doesn't have a minor unit.
     DecimalPlaces int
 }
 
@@ -126,21 +129,21 @@ func (cc CurrencyCode) Valid() bool {
 	fmt.Fprintln(&lookupBuffer, "var lookupTable = map[string]CurrencyCode{")
 
 	for i := range currencies {
-		code, name, microunit := currencies[i].Code, currencies[i].Name, currencies[i].MicroUnit
-		if code == "" || name == "" || microunit == "" {
-			fmt.Printf("SKIPPING: code=%q currency=%q microunit=%q\n", code, name, microunit)
+		code, name, minorunit := currencies[i].Code, currencies[i].Name, currencies[i].MinorUnit
+		if code == "" || name == "" || minorunit == "" {
+			fmt.Printf("SKIPPING: code=%q currency=%q minorunit=%q\n", code, name, minorunit)
 			continue
 		}
 		name = charCleaner.Replace(name)
-		microunit = charCleaner.Replace(microunit)
+		minorunit = charCleaner.Replace(minorunit)
 		if _, exists := cs[code]; !exists {
 			cs[code] = true // mark as seen
 
-			decimalPlaces := -1
-			if microunit != "-" {
-				d, err := strconv.Atoi(microunit)
+			decimalPlaces := 0
+			if minorunit != "-" {
+				d, err := strconv.Atoi(minorunit)
 				if err != nil {
-					log.Fatalf("error while parsing currency micro unit: %v", err)
+					log.Fatalf("error while parsing currency minor unit: %v", err)
 				}
 				decimalPlaces = d
 			}

@@ -15,11 +15,14 @@
 // specific language governing permissions and limitations
 // under the License.
 
-// Generated on 2023-06-05T04:30:46Z by raphaelsantodomingo, any modifications will be overwritten
+// Generated on 2023-06-05T05:08:58Z by raphaelsantodomingo, any modifications will be overwritten
 package iso4217
 
 type CurrencyCode struct {
-	Code, Name    string
+	Code, Name string
+
+	// DecimalPlaces represents the integer value of a currency's minor unit.
+	// DecimalPlaces is 0 if the currency doesn't have a minor unit.
 	DecimalPlaces int
 }
 
@@ -108,7 +111,7 @@ var (
 	HUF = CurrencyCode{Code: "HUF", Name: "Forint", DecimalPlaces: 2}
 	ISK = CurrencyCode{Code: "ISK", Name: "Iceland Krona", DecimalPlaces: 0}
 	IDR = CurrencyCode{Code: "IDR", Name: "Rupiah", DecimalPlaces: 2}
-	XDR = CurrencyCode{Code: "XDR", Name: "SDR (Special Drawing Right)", DecimalPlaces: -1}
+	XDR = CurrencyCode{Code: "XDR", Name: "SDR (Special Drawing Right)", DecimalPlaces: 0}
 	IRR = CurrencyCode{Code: "IRR", Name: "Iranian Rial", DecimalPlaces: 2}
 	IQD = CurrencyCode{Code: "IQD", Name: "Iraqi Dinar", DecimalPlaces: 3}
 	ILS = CurrencyCode{Code: "ILS", Name: "New Israeli Sheqel", DecimalPlaces: 2}
@@ -136,7 +139,7 @@ var (
 	MVR = CurrencyCode{Code: "MVR", Name: "Rufiyaa", DecimalPlaces: 2}
 	MRU = CurrencyCode{Code: "MRU", Name: "Ouguiya", DecimalPlaces: 2}
 	MUR = CurrencyCode{Code: "MUR", Name: "Mauritius Rupee", DecimalPlaces: 2}
-	XUA = CurrencyCode{Code: "XUA", Name: "ADB Unit of Account", DecimalPlaces: -1}
+	XUA = CurrencyCode{Code: "XUA", Name: "ADB Unit of Account", DecimalPlaces: 0}
 	MXN = CurrencyCode{Code: "MXN", Name: "Mexican Peso", DecimalPlaces: 2}
 	MXV = CurrencyCode{Code: "MXV", Name: "Mexican Unidad de Inversion (UDI)", DecimalPlaces: 2}
 	MDL = CurrencyCode{Code: "MDL", Name: "Moldovan Leu", DecimalPlaces: 2}
@@ -168,7 +171,7 @@ var (
 	SCR = CurrencyCode{Code: "SCR", Name: "Seychelles Rupee", DecimalPlaces: 2}
 	SLL = CurrencyCode{Code: "SLL", Name: "Leone", DecimalPlaces: 2}
 	SGD = CurrencyCode{Code: "SGD", Name: "Singapore Dollar", DecimalPlaces: 2}
-	XSU = CurrencyCode{Code: "XSU", Name: "Sucre", DecimalPlaces: -1}
+	XSU = CurrencyCode{Code: "XSU", Name: "Sucre", DecimalPlaces: 0}
 	SBD = CurrencyCode{Code: "SBD", Name: "Solomon Islands Dollar", DecimalPlaces: 2}
 	SOS = CurrencyCode{Code: "SOS", Name: "Somali Shilling", DecimalPlaces: 2}
 	SSP = CurrencyCode{Code: "SSP", Name: "South Sudanese Pound", DecimalPlaces: 2}
@@ -202,16 +205,16 @@ var (
 	YER = CurrencyCode{Code: "YER", Name: "Yemeni Rial", DecimalPlaces: 2}
 	ZMW = CurrencyCode{Code: "ZMW", Name: "Zambian Kwacha", DecimalPlaces: 2}
 	ZWL = CurrencyCode{Code: "ZWL", Name: "Zimbabwe Dollar", DecimalPlaces: 2}
-	XBA = CurrencyCode{Code: "XBA", Name: "Bond Markets Unit European Composite Unit (EURCO)", DecimalPlaces: -1}
-	XBB = CurrencyCode{Code: "XBB", Name: "Bond Markets Unit European Monetary Unit (E.M.U.-6)", DecimalPlaces: -1}
-	XBC = CurrencyCode{Code: "XBC", Name: "Bond Markets Unit European Unit of Account 9 (E.U.A.-9)", DecimalPlaces: -1}
-	XBD = CurrencyCode{Code: "XBD", Name: "Bond Markets Unit European Unit of Account 17 (E.U.A.-17)", DecimalPlaces: -1}
-	XTS = CurrencyCode{Code: "XTS", Name: "Codes specifically reserved for testing purposes", DecimalPlaces: -1}
-	XXX = CurrencyCode{Code: "XXX", Name: "The codes assigned for transactions where no currency is involved", DecimalPlaces: -1}
-	XAU = CurrencyCode{Code: "XAU", Name: "Gold", DecimalPlaces: -1}
-	XPD = CurrencyCode{Code: "XPD", Name: "Palladium", DecimalPlaces: -1}
-	XPT = CurrencyCode{Code: "XPT", Name: "Platinum", DecimalPlaces: -1}
-	XAG = CurrencyCode{Code: "XAG", Name: "Silver", DecimalPlaces: -1}
+	XBA = CurrencyCode{Code: "XBA", Name: "Bond Markets Unit European Composite Unit (EURCO)", DecimalPlaces: 0}
+	XBB = CurrencyCode{Code: "XBB", Name: "Bond Markets Unit European Monetary Unit (E.M.U.-6)", DecimalPlaces: 0}
+	XBC = CurrencyCode{Code: "XBC", Name: "Bond Markets Unit European Unit of Account 9 (E.U.A.-9)", DecimalPlaces: 0}
+	XBD = CurrencyCode{Code: "XBD", Name: "Bond Markets Unit European Unit of Account 17 (E.U.A.-17)", DecimalPlaces: 0}
+	XTS = CurrencyCode{Code: "XTS", Name: "Codes specifically reserved for testing purposes", DecimalPlaces: 0}
+	XXX = CurrencyCode{Code: "XXX", Name: "The codes assigned for transactions where no currency is involved", DecimalPlaces: 0}
+	XAU = CurrencyCode{Code: "XAU", Name: "Gold", DecimalPlaces: 0}
+	XPD = CurrencyCode{Code: "XPD", Name: "Palladium", DecimalPlaces: 0}
+	XPT = CurrencyCode{Code: "XPT", Name: "Platinum", DecimalPlaces: 0}
+	XAG = CurrencyCode{Code: "XAG", Name: "Silver", DecimalPlaces: 0}
 )
 
 var lookupTable = map[string]CurrencyCode{
