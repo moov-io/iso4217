@@ -15,11 +15,15 @@
 // specific language governing permissions and limitations
 // under the License.
 
-// Generated on 2023-06-02T09:32:24Z by adam, any modifications will be overwritten
+// Generated on 2023-06-05T05:08:58Z by raphaelsantodomingo, any modifications will be overwritten
 package iso4217
 
 type CurrencyCode struct {
 	Code, Name string
+
+	// DecimalPlaces represents the integer value of a currency's minor unit.
+	// DecimalPlaces is 0 if the currency doesn't have a minor unit.
+	DecimalPlaces int
 }
 
 func (cc CurrencyCode) String() string {
@@ -32,308 +36,185 @@ func (cc CurrencyCode) Valid() bool {
 }
 
 var (
-	AFN = CurrencyCode{Code: "AFN", Name: "Afghani"}
-	EUR = CurrencyCode{Code: "EUR", Name: "Euro"}
-	ALL = CurrencyCode{Code: "ALL", Name: "Lek"}
-	DZD = CurrencyCode{Code: "DZD", Name: "Algerian Dinar"}
-	USD = CurrencyCode{Code: "USD", Name: "US Dollar"}
-	AOA = CurrencyCode{Code: "AOA", Name: "Kwanza"}
-	XCD = CurrencyCode{Code: "XCD", Name: "East Caribbean Dollar"}
-	ARS = CurrencyCode{Code: "ARS", Name: "Argentine Peso"}
-	AMD = CurrencyCode{Code: "AMD", Name: "Armenian Dram"}
-	AWG = CurrencyCode{Code: "AWG", Name: "Aruban Florin"}
-	AUD = CurrencyCode{Code: "AUD", Name: "Australian Dollar"}
-	AZN = CurrencyCode{Code: "AZN", Name: "Azerbaijan Manat"}
-	BSD = CurrencyCode{Code: "BSD", Name: "Bahamian Dollar"}
-	BHD = CurrencyCode{Code: "BHD", Name: "Bahraini Dinar"}
-	BDT = CurrencyCode{Code: "BDT", Name: "Taka"}
-	BBD = CurrencyCode{Code: "BBD", Name: "Barbados Dollar"}
-	BYN = CurrencyCode{Code: "BYN", Name: "Belarusian Ruble"}
-	BZD = CurrencyCode{Code: "BZD", Name: "Belize Dollar"}
-	XOF = CurrencyCode{Code: "XOF", Name: "CFA Franc BCEAO"}
-	BMD = CurrencyCode{Code: "BMD", Name: "Bermudian Dollar"}
-	INR = CurrencyCode{Code: "INR", Name: "Indian Rupee"}
-	BTN = CurrencyCode{Code: "BTN", Name: "Ngultrum"}
-	BOB = CurrencyCode{Code: "BOB", Name: "Boliviano"}
-	BOV = CurrencyCode{Code: "BOV", Name: "Mvdol"}
-	BAM = CurrencyCode{Code: "BAM", Name: "Convertible Mark"}
-	BWP = CurrencyCode{Code: "BWP", Name: "Pula"}
-	NOK = CurrencyCode{Code: "NOK", Name: "Norwegian Krone"}
-	BRL = CurrencyCode{Code: "BRL", Name: "Brazilian Real"}
-	BND = CurrencyCode{Code: "BND", Name: "Brunei Dollar"}
-	BGN = CurrencyCode{Code: "BGN", Name: "Bulgarian Lev"}
-	BIF = CurrencyCode{Code: "BIF", Name: "Burundi Franc"}
-	CVE = CurrencyCode{Code: "CVE", Name: "Cabo Verde Escudo"}
-	KHR = CurrencyCode{Code: "KHR", Name: "Riel"}
-	XAF = CurrencyCode{Code: "XAF", Name: "CFA Franc BEAC"}
-	CAD = CurrencyCode{Code: "CAD", Name: "Canadian Dollar"}
-	KYD = CurrencyCode{Code: "KYD", Name: "Cayman Islands Dollar"}
-	CLP = CurrencyCode{Code: "CLP", Name: "Chilean Peso"}
-	CLF = CurrencyCode{Code: "CLF", Name: "Unidad de Fomento"}
-	CNY = CurrencyCode{Code: "CNY", Name: "Yuan Renminbi"}
-	COP = CurrencyCode{Code: "COP", Name: "Colombian Peso"}
-	COU = CurrencyCode{Code: "COU", Name: "Unidad de Valor Real"}
-	KMF = CurrencyCode{Code: "KMF", Name: "Comorian Franc"}
-	CDF = CurrencyCode{Code: "CDF", Name: "Congolese Franc"}
-	NZD = CurrencyCode{Code: "NZD", Name: "New Zealand Dollar"}
-	CRC = CurrencyCode{Code: "CRC", Name: "Costa Rican Colon"}
-	HRK = CurrencyCode{Code: "HRK", Name: "Kuna"}
-	CUP = CurrencyCode{Code: "CUP", Name: "Cuban Peso"}
-	CUC = CurrencyCode{Code: "CUC", Name: "Peso Convertible"}
-	ANG = CurrencyCode{Code: "ANG", Name: "Netherlands Antillean Guilder"}
-	CZK = CurrencyCode{Code: "CZK", Name: "Czech Koruna"}
-	DKK = CurrencyCode{Code: "DKK", Name: "Danish Krone"}
-	DJF = CurrencyCode{Code: "DJF", Name: "Djibouti Franc"}
-	DOP = CurrencyCode{Code: "DOP", Name: "Dominican Peso"}
-	EGP = CurrencyCode{Code: "EGP", Name: "Egyptian Pound"}
-	SVC = CurrencyCode{Code: "SVC", Name: "El Salvador Colon"}
-	ERN = CurrencyCode{Code: "ERN", Name: "Nakfa"}
-	SZL = CurrencyCode{Code: "SZL", Name: "Lilangeni"}
-	ETB = CurrencyCode{Code: "ETB", Name: "Ethiopian Birr"}
-	FKP = CurrencyCode{Code: "FKP", Name: "Falkland Islands Pound"}
-	FJD = CurrencyCode{Code: "FJD", Name: "Fiji Dollar"}
-	XPF = CurrencyCode{Code: "XPF", Name: "CFP Franc"}
-	GMD = CurrencyCode{Code: "GMD", Name: "Dalasi"}
-	GEL = CurrencyCode{Code: "GEL", Name: "Lari"}
-	GHS = CurrencyCode{Code: "GHS", Name: "Ghana Cedi"}
-	GIP = CurrencyCode{Code: "GIP", Name: "Gibraltar Pound"}
-	GTQ = CurrencyCode{Code: "GTQ", Name: "Quetzal"}
-	GBP = CurrencyCode{Code: "GBP", Name: "Pound Sterling"}
-	GNF = CurrencyCode{Code: "GNF", Name: "Guinean Franc"}
-	GYD = CurrencyCode{Code: "GYD", Name: "Guyana Dollar"}
-	HTG = CurrencyCode{Code: "HTG", Name: "Gourde"}
-	HNL = CurrencyCode{Code: "HNL", Name: "Lempira"}
-	HKD = CurrencyCode{Code: "HKD", Name: "Hong Kong Dollar"}
-	HUF = CurrencyCode{Code: "HUF", Name: "Forint"}
-	ISK = CurrencyCode{Code: "ISK", Name: "Iceland Krona"}
-	IDR = CurrencyCode{Code: "IDR", Name: "Rupiah"}
-	XDR = CurrencyCode{Code: "XDR", Name: "SDR (Special Drawing Right)"}
-	IRR = CurrencyCode{Code: "IRR", Name: "Iranian Rial"}
-	IQD = CurrencyCode{Code: "IQD", Name: "Iraqi Dinar"}
-	ILS = CurrencyCode{Code: "ILS", Name: "New Israeli Sheqel"}
-	JMD = CurrencyCode{Code: "JMD", Name: "Jamaican Dollar"}
-	JPY = CurrencyCode{Code: "JPY", Name: "Yen"}
-	JOD = CurrencyCode{Code: "JOD", Name: "Jordanian Dinar"}
-	KZT = CurrencyCode{Code: "KZT", Name: "Tenge"}
-	KES = CurrencyCode{Code: "KES", Name: "Kenyan Shilling"}
-	KPW = CurrencyCode{Code: "KPW", Name: "North Korean Won"}
-	KRW = CurrencyCode{Code: "KRW", Name: "Won"}
-	KWD = CurrencyCode{Code: "KWD", Name: "Kuwaiti Dinar"}
-	KGS = CurrencyCode{Code: "KGS", Name: "Som"}
-	LAK = CurrencyCode{Code: "LAK", Name: "Lao Kip"}
-	LBP = CurrencyCode{Code: "LBP", Name: "Lebanese Pound"}
-	LSL = CurrencyCode{Code: "LSL", Name: "Loti"}
-	ZAR = CurrencyCode{Code: "ZAR", Name: "Rand"}
-	LRD = CurrencyCode{Code: "LRD", Name: "Liberian Dollar"}
-	LYD = CurrencyCode{Code: "LYD", Name: "Libyan Dinar"}
-	CHF = CurrencyCode{Code: "CHF", Name: "Swiss Franc"}
-	MOP = CurrencyCode{Code: "MOP", Name: "Pataca"}
-	MKD = CurrencyCode{Code: "MKD", Name: "Denar"}
-	MGA = CurrencyCode{Code: "MGA", Name: "Malagasy Ariary"}
-	MWK = CurrencyCode{Code: "MWK", Name: "Malawi Kwacha"}
-	MYR = CurrencyCode{Code: "MYR", Name: "Malaysian Ringgit"}
-	MVR = CurrencyCode{Code: "MVR", Name: "Rufiyaa"}
-	MRU = CurrencyCode{Code: "MRU", Name: "Ouguiya"}
-	MUR = CurrencyCode{Code: "MUR", Name: "Mauritius Rupee"}
-	XUA = CurrencyCode{Code: "XUA", Name: "ADB Unit of Account"}
-	MXN = CurrencyCode{Code: "MXN", Name: "Mexican Peso"}
-	MXV = CurrencyCode{Code: "MXV", Name: "Mexican Unidad de Inversion (UDI)"}
-	MDL = CurrencyCode{Code: "MDL", Name: "Moldovan Leu"}
-	MNT = CurrencyCode{Code: "MNT", Name: "Tugrik"}
-	MAD = CurrencyCode{Code: "MAD", Name: "Moroccan Dirham"}
-	MZN = CurrencyCode{Code: "MZN", Name: "Mozambique Metical"}
-	MMK = CurrencyCode{Code: "MMK", Name: "Kyat"}
-	NAD = CurrencyCode{Code: "NAD", Name: "Namibia Dollar"}
-	NPR = CurrencyCode{Code: "NPR", Name: "Nepalese Rupee"}
-	NIO = CurrencyCode{Code: "NIO", Name: "Cordoba Oro"}
-	NGN = CurrencyCode{Code: "NGN", Name: "Naira"}
-	OMR = CurrencyCode{Code: "OMR", Name: "Rial Omani"}
-	PKR = CurrencyCode{Code: "PKR", Name: "Pakistan Rupee"}
-	PAB = CurrencyCode{Code: "PAB", Name: "Balboa"}
-	PGK = CurrencyCode{Code: "PGK", Name: "Kina"}
-	PYG = CurrencyCode{Code: "PYG", Name: "Guarani"}
-	PEN = CurrencyCode{Code: "PEN", Name: "Sol"}
-	PHP = CurrencyCode{Code: "PHP", Name: "Philippine Peso"}
-	PLN = CurrencyCode{Code: "PLN", Name: "Zloty"}
-	QAR = CurrencyCode{Code: "QAR", Name: "Qatari Rial"}
-	RON = CurrencyCode{Code: "RON", Name: "Romanian Leu"}
-	RUB = CurrencyCode{Code: "RUB", Name: "Russian Ruble"}
-	RWF = CurrencyCode{Code: "RWF", Name: "Rwanda Franc"}
-	SHP = CurrencyCode{Code: "SHP", Name: "Saint Helena Pound"}
-	WST = CurrencyCode{Code: "WST", Name: "Tala"}
-	STN = CurrencyCode{Code: "STN", Name: "Dobra"}
-	SAR = CurrencyCode{Code: "SAR", Name: "Saudi Riyal"}
-	RSD = CurrencyCode{Code: "RSD", Name: "Serbian Dinar"}
-	SCR = CurrencyCode{Code: "SCR", Name: "Seychelles Rupee"}
-	SLL = CurrencyCode{Code: "SLL", Name: "Leone"}
-	SGD = CurrencyCode{Code: "SGD", Name: "Singapore Dollar"}
-	XSU = CurrencyCode{Code: "XSU", Name: "Sucre"}
-	SBD = CurrencyCode{Code: "SBD", Name: "Solomon Islands Dollar"}
-	SOS = CurrencyCode{Code: "SOS", Name: "Somali Shilling"}
-	SSP = CurrencyCode{Code: "SSP", Name: "South Sudanese Pound"}
-	LKR = CurrencyCode{Code: "LKR", Name: "Sri Lanka Rupee"}
-	SDG = CurrencyCode{Code: "SDG", Name: "Sudanese Pound"}
-	SRD = CurrencyCode{Code: "SRD", Name: "Surinam Dollar"}
-	SEK = CurrencyCode{Code: "SEK", Name: "Swedish Krona"}
-	CHE = CurrencyCode{Code: "CHE", Name: "WIR Euro"}
-	CHW = CurrencyCode{Code: "CHW", Name: "WIR Franc"}
-	SYP = CurrencyCode{Code: "SYP", Name: "Syrian Pound"}
-	TWD = CurrencyCode{Code: "TWD", Name: "New Taiwan Dollar"}
-	TJS = CurrencyCode{Code: "TJS", Name: "Somoni"}
-	TZS = CurrencyCode{Code: "TZS", Name: "Tanzanian Shilling"}
-	THB = CurrencyCode{Code: "THB", Name: "Baht"}
-	TOP = CurrencyCode{Code: "TOP", Name: "Pa'anga"}
-	TTD = CurrencyCode{Code: "TTD", Name: "Trinidad and Tobago Dollar"}
-	TND = CurrencyCode{Code: "TND", Name: "Tunisian Dinar"}
-	TRY = CurrencyCode{Code: "TRY", Name: "Turkish Lira"}
-	TMT = CurrencyCode{Code: "TMT", Name: "Turkmenistan New Manat"}
-	UGX = CurrencyCode{Code: "UGX", Name: "Uganda Shilling"}
-	UAH = CurrencyCode{Code: "UAH", Name: "Hryvnia"}
-	AED = CurrencyCode{Code: "AED", Name: "UAE Dirham"}
-	USN = CurrencyCode{Code: "USN", Name: "US Dollar (Next day)"}
-	UYU = CurrencyCode{Code: "UYU", Name: "Peso Uruguayo"}
-	UYI = CurrencyCode{Code: "UYI", Name: "Uruguay Peso en Unidades Indexadas (UI)"}
-	UYW = CurrencyCode{Code: "UYW", Name: "Unidad Previsional"}
-	UZS = CurrencyCode{Code: "UZS", Name: "Uzbekistan Sum"}
-	VUV = CurrencyCode{Code: "VUV", Name: "Vatu"}
-	VES = CurrencyCode{Code: "VES", Name: "Bolívar Soberano"}
-	VND = CurrencyCode{Code: "VND", Name: "Dong"}
-	YER = CurrencyCode{Code: "YER", Name: "Yemeni Rial"}
-	ZMW = CurrencyCode{Code: "ZMW", Name: "Zambian Kwacha"}
-	ZWL = CurrencyCode{Code: "ZWL", Name: "Zimbabwe Dollar"}
-	XBA = CurrencyCode{Code: "XBA", Name: "Bond Markets Unit European Composite Unit (EURCO)"}
-	XBB = CurrencyCode{Code: "XBB", Name: "Bond Markets Unit European Monetary Unit (E.M.U.-6)"}
-	XBC = CurrencyCode{Code: "XBC", Name: "Bond Markets Unit European Unit of Account 9 (E.U.A.-9)"}
-	XBD = CurrencyCode{Code: "XBD", Name: "Bond Markets Unit European Unit of Account 17 (E.U.A.-17)"}
-	XTS = CurrencyCode{Code: "XTS", Name: "Codes specifically reserved for testing purposes"}
-	XXX = CurrencyCode{Code: "XXX", Name: "The codes assigned for transactions where no currency is involved"}
-	XAU = CurrencyCode{Code: "XAU", Name: "Gold"}
-	XPD = CurrencyCode{Code: "XPD", Name: "Palladium"}
-	XPT = CurrencyCode{Code: "XPT", Name: "Platinum"}
-	XAG = CurrencyCode{Code: "XAG", Name: "Silver"}
-	AFA = CurrencyCode{Code: "AFA", Name: "Afghani"}
-	FIM = CurrencyCode{Code: "FIM", Name: "Markka"}
-	ALK = CurrencyCode{Code: "ALK", Name: "Old Lek"}
-	ADP = CurrencyCode{Code: "ADP", Name: "Andorran Peseta"}
-	ESP = CurrencyCode{Code: "ESP", Name: "Spanish Peseta"}
-	FRF = CurrencyCode{Code: "FRF", Name: "French Franc"}
-	AOK = CurrencyCode{Code: "AOK", Name: "Kwanza"}
-	AON = CurrencyCode{Code: "AON", Name: "New Kwanza"}
-	AOR = CurrencyCode{Code: "AOR", Name: "Kwanza Reajustado"}
-	ARA = CurrencyCode{Code: "ARA", Name: "Austral"}
-	ARP = CurrencyCode{Code: "ARP", Name: "Peso Argentino"}
-	ARY = CurrencyCode{Code: "ARY", Name: "Peso"}
-	RUR = CurrencyCode{Code: "RUR", Name: "Russian Ruble"}
-	ATS = CurrencyCode{Code: "ATS", Name: "Schilling"}
-	AYM = CurrencyCode{Code: "AYM", Name: "Azerbaijan Manat"}
-	AZM = CurrencyCode{Code: "AZM", Name: "Azerbaijanian Manat"}
-	BYB = CurrencyCode{Code: "BYB", Name: "Belarusian Ruble"}
-	BYR = CurrencyCode{Code: "BYR", Name: "Belarusian Ruble"}
-	BEC = CurrencyCode{Code: "BEC", Name: "Convertible Franc"}
-	BEF = CurrencyCode{Code: "BEF", Name: "Belgian Franc"}
-	BEL = CurrencyCode{Code: "BEL", Name: "Financial Franc"}
-	BOP = CurrencyCode{Code: "BOP", Name: "Peso boliviano"}
-	BAD = CurrencyCode{Code: "BAD", Name: "Dinar"}
-	BRB = CurrencyCode{Code: "BRB", Name: "Cruzeiro"}
-	BRC = CurrencyCode{Code: "BRC", Name: "Cruzado"}
-	BRE = CurrencyCode{Code: "BRE", Name: "Cruzeiro"}
-	BRN = CurrencyCode{Code: "BRN", Name: "New Cruzado"}
-	BRR = CurrencyCode{Code: "BRR", Name: "Cruzeiro Real"}
-	BGJ = CurrencyCode{Code: "BGJ", Name: "Lev A/52"}
-	BGK = CurrencyCode{Code: "BGK", Name: "Lev A/62"}
-	BGL = CurrencyCode{Code: "BGL", Name: "Lev"}
-	BUK = CurrencyCode{Code: "BUK", Name: "Kyat"}
-	HRD = CurrencyCode{Code: "HRD", Name: "Croatian Dinar"}
-	CYP = CurrencyCode{Code: "CYP", Name: "Cyprus Pound"}
-	CSJ = CurrencyCode{Code: "CSJ", Name: "Krona A/53"}
-	CSK = CurrencyCode{Code: "CSK", Name: "Koruna"}
-	ECS = CurrencyCode{Code: "ECS", Name: "Sucre"}
-	ECV = CurrencyCode{Code: "ECV", Name: "Unidad de Valor Constante (UVC)"}
-	GQE = CurrencyCode{Code: "GQE", Name: "Ekwele"}
-	EEK = CurrencyCode{Code: "EEK", Name: "Kroon"}
-	XEU = CurrencyCode{Code: "XEU", Name: "European Currency Unit (E.C.U)"}
-	GEK = CurrencyCode{Code: "GEK", Name: "Georgian Coupon"}
-	DDM = CurrencyCode{Code: "DDM", Name: "Mark der DDR"}
-	DEM = CurrencyCode{Code: "DEM", Name: "Deutsche Mark"}
-	GHC = CurrencyCode{Code: "GHC", Name: "Cedi"}
-	GHP = CurrencyCode{Code: "GHP", Name: "Ghana Cedi"}
-	GRD = CurrencyCode{Code: "GRD", Name: "Drachma"}
-	GNE = CurrencyCode{Code: "GNE", Name: "Syli"}
-	GNS = CurrencyCode{Code: "GNS", Name: "Syli"}
-	GWE = CurrencyCode{Code: "GWE", Name: "Guinea Escudo"}
-	GWP = CurrencyCode{Code: "GWP", Name: "Guinea-Bissau Peso"}
-	ITL = CurrencyCode{Code: "ITL", Name: "Italian Lira"}
-	ISJ = CurrencyCode{Code: "ISJ", Name: "Old Krona"}
-	IEP = CurrencyCode{Code: "IEP", Name: "Irish Pound"}
-	ILP = CurrencyCode{Code: "ILP", Name: "Pound"}
-	ILR = CurrencyCode{Code: "ILR", Name: "Old Shekel"}
-	LAJ = CurrencyCode{Code: "LAJ", Name: "Pathet Lao Kip"}
-	LVL = CurrencyCode{Code: "LVL", Name: "Latvian Lats"}
-	LVR = CurrencyCode{Code: "LVR", Name: "Latvian Ruble"}
-	LSM = CurrencyCode{Code: "LSM", Name: "Loti"}
-	ZAL = CurrencyCode{Code: "ZAL", Name: "Financial Rand"}
-	LTL = CurrencyCode{Code: "LTL", Name: "Lithuanian Litas"}
-	LTT = CurrencyCode{Code: "LTT", Name: "Talonas"}
-	LUC = CurrencyCode{Code: "LUC", Name: "Luxembourg Convertible Franc"}
-	LUF = CurrencyCode{Code: "LUF", Name: "Luxembourg Franc"}
-	LUL = CurrencyCode{Code: "LUL", Name: "Luxembourg Financial Franc"}
-	MGF = CurrencyCode{Code: "MGF", Name: "Malagasy Franc"}
-	MVQ = CurrencyCode{Code: "MVQ", Name: "Maldive Rupee"}
-	MLF = CurrencyCode{Code: "MLF", Name: "Mali Franc"}
-	MTL = CurrencyCode{Code: "MTL", Name: "Maltese Lira"}
-	MTP = CurrencyCode{Code: "MTP", Name: "Maltese Pound"}
-	MRO = CurrencyCode{Code: "MRO", Name: "Ouguiya"}
-	MXP = CurrencyCode{Code: "MXP", Name: "Mexican Peso"}
-	MZE = CurrencyCode{Code: "MZE", Name: "Mozambique Escudo"}
-	MZM = CurrencyCode{Code: "MZM", Name: "Mozambique Metical"}
-	NLG = CurrencyCode{Code: "NLG", Name: "Netherlands Guilder"}
-	NIC = CurrencyCode{Code: "NIC", Name: "Cordoba"}
-	PEH = CurrencyCode{Code: "PEH", Name: "Sol"}
-	PEI = CurrencyCode{Code: "PEI", Name: "Inti"}
-	PES = CurrencyCode{Code: "PES", Name: "Sol"}
-	PLZ = CurrencyCode{Code: "PLZ", Name: "Zloty"}
-	PTE = CurrencyCode{Code: "PTE", Name: "Portuguese Escudo"}
-	ROK = CurrencyCode{Code: "ROK", Name: "Leu A/52"}
-	ROL = CurrencyCode{Code: "ROL", Name: "Old Leu"}
-	STD = CurrencyCode{Code: "STD", Name: "Dobra"}
-	CSD = CurrencyCode{Code: "CSD", Name: "Serbian Dinar"}
-	SKK = CurrencyCode{Code: "SKK", Name: "Slovak Koruna"}
-	SIT = CurrencyCode{Code: "SIT", Name: "Tolar"}
-	RHD = CurrencyCode{Code: "RHD", Name: "Rhodesian Dollar"}
-	ESA = CurrencyCode{Code: "ESA", Name: "Spanish Peseta"}
-	ESB = CurrencyCode{Code: "ESB", Name: "A Account (convertible Peseta Account)"}
-	SDD = CurrencyCode{Code: "SDD", Name: "Sudanese Dinar"}
-	SDP = CurrencyCode{Code: "SDP", Name: "Sudanese Pound"}
-	SRG = CurrencyCode{Code: "SRG", Name: "Surinam Guilder"}
-	CHC = CurrencyCode{Code: "CHC", Name: "WIR Franc (for electronic)"}
-	TJR = CurrencyCode{Code: "TJR", Name: "Tajik Ruble"}
-	TPE = CurrencyCode{Code: "TPE", Name: "Timor Escudo"}
-	TRL = CurrencyCode{Code: "TRL", Name: "Old Turkish Lira"}
-	TMM = CurrencyCode{Code: "TMM", Name: "Turkmenistan Manat"}
-	UGS = CurrencyCode{Code: "UGS", Name: "Uganda Shilling"}
-	UGW = CurrencyCode{Code: "UGW", Name: "Old Shilling"}
-	UAK = CurrencyCode{Code: "UAK", Name: "Karbovanet"}
-	SUR = CurrencyCode{Code: "SUR", Name: "Rouble"}
-	USS = CurrencyCode{Code: "USS", Name: "US Dollar (Same day)"}
-	UYN = CurrencyCode{Code: "UYN", Name: "Old Uruguay Peso"}
-	UYP = CurrencyCode{Code: "UYP", Name: "Uruguayan Peso"}
-	VEB = CurrencyCode{Code: "VEB", Name: "Bolivar"}
-	VEF = CurrencyCode{Code: "VEF", Name: "Bolivar Fuerte"}
-	VNC = CurrencyCode{Code: "VNC", Name: "Old Dong"}
-	YDD = CurrencyCode{Code: "YDD", Name: "Yemeni Dinar"}
-	YUD = CurrencyCode{Code: "YUD", Name: "New Yugoslavian Dinar"}
-	YUM = CurrencyCode{Code: "YUM", Name: "New Dinar"}
-	YUN = CurrencyCode{Code: "YUN", Name: "Yugoslavian Dinar"}
-	ZRN = CurrencyCode{Code: "ZRN", Name: "New Zaire"}
-	ZRZ = CurrencyCode{Code: "ZRZ", Name: "Zaire"}
-	ZMK = CurrencyCode{Code: "ZMK", Name: "Zambian Kwacha"}
-	ZWC = CurrencyCode{Code: "ZWC", Name: "Rhodesian Dollar"}
-	ZWD = CurrencyCode{Code: "ZWD", Name: "Zimbabwe Dollar (old)"}
-	ZWN = CurrencyCode{Code: "ZWN", Name: "Zimbabwe Dollar (new)"}
-	ZWR = CurrencyCode{Code: "ZWR", Name: "Zimbabwe Dollar"}
-	XFO = CurrencyCode{Code: "XFO", Name: "Gold-Franc"}
-	XRE = CurrencyCode{Code: "XRE", Name: "RINET Funds Code"}
-	XFU = CurrencyCode{Code: "XFU", Name: "UIC-Franc"}
+	AFN = CurrencyCode{Code: "AFN", Name: "Afghani", DecimalPlaces: 2}
+	EUR = CurrencyCode{Code: "EUR", Name: "Euro", DecimalPlaces: 2}
+	ALL = CurrencyCode{Code: "ALL", Name: "Lek", DecimalPlaces: 2}
+	DZD = CurrencyCode{Code: "DZD", Name: "Algerian Dinar", DecimalPlaces: 2}
+	USD = CurrencyCode{Code: "USD", Name: "US Dollar", DecimalPlaces: 2}
+	AOA = CurrencyCode{Code: "AOA", Name: "Kwanza", DecimalPlaces: 2}
+	XCD = CurrencyCode{Code: "XCD", Name: "East Caribbean Dollar", DecimalPlaces: 2}
+	ARS = CurrencyCode{Code: "ARS", Name: "Argentine Peso", DecimalPlaces: 2}
+	AMD = CurrencyCode{Code: "AMD", Name: "Armenian Dram", DecimalPlaces: 2}
+	AWG = CurrencyCode{Code: "AWG", Name: "Aruban Florin", DecimalPlaces: 2}
+	AUD = CurrencyCode{Code: "AUD", Name: "Australian Dollar", DecimalPlaces: 2}
+	AZN = CurrencyCode{Code: "AZN", Name: "Azerbaijan Manat", DecimalPlaces: 2}
+	BSD = CurrencyCode{Code: "BSD", Name: "Bahamian Dollar", DecimalPlaces: 2}
+	BHD = CurrencyCode{Code: "BHD", Name: "Bahraini Dinar", DecimalPlaces: 3}
+	BDT = CurrencyCode{Code: "BDT", Name: "Taka", DecimalPlaces: 2}
+	BBD = CurrencyCode{Code: "BBD", Name: "Barbados Dollar", DecimalPlaces: 2}
+	BYN = CurrencyCode{Code: "BYN", Name: "Belarusian Ruble", DecimalPlaces: 2}
+	BZD = CurrencyCode{Code: "BZD", Name: "Belize Dollar", DecimalPlaces: 2}
+	XOF = CurrencyCode{Code: "XOF", Name: "CFA Franc BCEAO", DecimalPlaces: 0}
+	BMD = CurrencyCode{Code: "BMD", Name: "Bermudian Dollar", DecimalPlaces: 2}
+	INR = CurrencyCode{Code: "INR", Name: "Indian Rupee", DecimalPlaces: 2}
+	BTN = CurrencyCode{Code: "BTN", Name: "Ngultrum", DecimalPlaces: 2}
+	BOB = CurrencyCode{Code: "BOB", Name: "Boliviano", DecimalPlaces: 2}
+	BOV = CurrencyCode{Code: "BOV", Name: "Mvdol", DecimalPlaces: 2}
+	BAM = CurrencyCode{Code: "BAM", Name: "Convertible Mark", DecimalPlaces: 2}
+	BWP = CurrencyCode{Code: "BWP", Name: "Pula", DecimalPlaces: 2}
+	NOK = CurrencyCode{Code: "NOK", Name: "Norwegian Krone", DecimalPlaces: 2}
+	BRL = CurrencyCode{Code: "BRL", Name: "Brazilian Real", DecimalPlaces: 2}
+	BND = CurrencyCode{Code: "BND", Name: "Brunei Dollar", DecimalPlaces: 2}
+	BGN = CurrencyCode{Code: "BGN", Name: "Bulgarian Lev", DecimalPlaces: 2}
+	BIF = CurrencyCode{Code: "BIF", Name: "Burundi Franc", DecimalPlaces: 0}
+	CVE = CurrencyCode{Code: "CVE", Name: "Cabo Verde Escudo", DecimalPlaces: 2}
+	KHR = CurrencyCode{Code: "KHR", Name: "Riel", DecimalPlaces: 2}
+	XAF = CurrencyCode{Code: "XAF", Name: "CFA Franc BEAC", DecimalPlaces: 0}
+	CAD = CurrencyCode{Code: "CAD", Name: "Canadian Dollar", DecimalPlaces: 2}
+	KYD = CurrencyCode{Code: "KYD", Name: "Cayman Islands Dollar", DecimalPlaces: 2}
+	CLP = CurrencyCode{Code: "CLP", Name: "Chilean Peso", DecimalPlaces: 0}
+	CLF = CurrencyCode{Code: "CLF", Name: "Unidad de Fomento", DecimalPlaces: 4}
+	CNY = CurrencyCode{Code: "CNY", Name: "Yuan Renminbi", DecimalPlaces: 2}
+	COP = CurrencyCode{Code: "COP", Name: "Colombian Peso", DecimalPlaces: 2}
+	COU = CurrencyCode{Code: "COU", Name: "Unidad de Valor Real", DecimalPlaces: 2}
+	KMF = CurrencyCode{Code: "KMF", Name: "Comorian Franc", DecimalPlaces: 0}
+	CDF = CurrencyCode{Code: "CDF", Name: "Congolese Franc", DecimalPlaces: 2}
+	NZD = CurrencyCode{Code: "NZD", Name: "New Zealand Dollar", DecimalPlaces: 2}
+	CRC = CurrencyCode{Code: "CRC", Name: "Costa Rican Colon", DecimalPlaces: 2}
+	HRK = CurrencyCode{Code: "HRK", Name: "Kuna", DecimalPlaces: 2}
+	CUP = CurrencyCode{Code: "CUP", Name: "Cuban Peso", DecimalPlaces: 2}
+	CUC = CurrencyCode{Code: "CUC", Name: "Peso Convertible", DecimalPlaces: 2}
+	ANG = CurrencyCode{Code: "ANG", Name: "Netherlands Antillean Guilder", DecimalPlaces: 2}
+	CZK = CurrencyCode{Code: "CZK", Name: "Czech Koruna", DecimalPlaces: 2}
+	DKK = CurrencyCode{Code: "DKK", Name: "Danish Krone", DecimalPlaces: 2}
+	DJF = CurrencyCode{Code: "DJF", Name: "Djibouti Franc", DecimalPlaces: 0}
+	DOP = CurrencyCode{Code: "DOP", Name: "Dominican Peso", DecimalPlaces: 2}
+	EGP = CurrencyCode{Code: "EGP", Name: "Egyptian Pound", DecimalPlaces: 2}
+	SVC = CurrencyCode{Code: "SVC", Name: "El Salvador Colon", DecimalPlaces: 2}
+	ERN = CurrencyCode{Code: "ERN", Name: "Nakfa", DecimalPlaces: 2}
+	SZL = CurrencyCode{Code: "SZL", Name: "Lilangeni", DecimalPlaces: 2}
+	ETB = CurrencyCode{Code: "ETB", Name: "Ethiopian Birr", DecimalPlaces: 2}
+	FKP = CurrencyCode{Code: "FKP", Name: "Falkland Islands Pound", DecimalPlaces: 2}
+	FJD = CurrencyCode{Code: "FJD", Name: "Fiji Dollar", DecimalPlaces: 2}
+	XPF = CurrencyCode{Code: "XPF", Name: "CFP Franc", DecimalPlaces: 0}
+	GMD = CurrencyCode{Code: "GMD", Name: "Dalasi", DecimalPlaces: 2}
+	GEL = CurrencyCode{Code: "GEL", Name: "Lari", DecimalPlaces: 2}
+	GHS = CurrencyCode{Code: "GHS", Name: "Ghana Cedi", DecimalPlaces: 2}
+	GIP = CurrencyCode{Code: "GIP", Name: "Gibraltar Pound", DecimalPlaces: 2}
+	GTQ = CurrencyCode{Code: "GTQ", Name: "Quetzal", DecimalPlaces: 2}
+	GBP = CurrencyCode{Code: "GBP", Name: "Pound Sterling", DecimalPlaces: 2}
+	GNF = CurrencyCode{Code: "GNF", Name: "Guinean Franc", DecimalPlaces: 0}
+	GYD = CurrencyCode{Code: "GYD", Name: "Guyana Dollar", DecimalPlaces: 2}
+	HTG = CurrencyCode{Code: "HTG", Name: "Gourde", DecimalPlaces: 2}
+	HNL = CurrencyCode{Code: "HNL", Name: "Lempira", DecimalPlaces: 2}
+	HKD = CurrencyCode{Code: "HKD", Name: "Hong Kong Dollar", DecimalPlaces: 2}
+	HUF = CurrencyCode{Code: "HUF", Name: "Forint", DecimalPlaces: 2}
+	ISK = CurrencyCode{Code: "ISK", Name: "Iceland Krona", DecimalPlaces: 0}
+	IDR = CurrencyCode{Code: "IDR", Name: "Rupiah", DecimalPlaces: 2}
+	XDR = CurrencyCode{Code: "XDR", Name: "SDR (Special Drawing Right)", DecimalPlaces: 0}
+	IRR = CurrencyCode{Code: "IRR", Name: "Iranian Rial", DecimalPlaces: 2}
+	IQD = CurrencyCode{Code: "IQD", Name: "Iraqi Dinar", DecimalPlaces: 3}
+	ILS = CurrencyCode{Code: "ILS", Name: "New Israeli Sheqel", DecimalPlaces: 2}
+	JMD = CurrencyCode{Code: "JMD", Name: "Jamaican Dollar", DecimalPlaces: 2}
+	JPY = CurrencyCode{Code: "JPY", Name: "Yen", DecimalPlaces: 0}
+	JOD = CurrencyCode{Code: "JOD", Name: "Jordanian Dinar", DecimalPlaces: 3}
+	KZT = CurrencyCode{Code: "KZT", Name: "Tenge", DecimalPlaces: 2}
+	KES = CurrencyCode{Code: "KES", Name: "Kenyan Shilling", DecimalPlaces: 2}
+	KPW = CurrencyCode{Code: "KPW", Name: "North Korean Won", DecimalPlaces: 2}
+	KRW = CurrencyCode{Code: "KRW", Name: "Won", DecimalPlaces: 0}
+	KWD = CurrencyCode{Code: "KWD", Name: "Kuwaiti Dinar", DecimalPlaces: 3}
+	KGS = CurrencyCode{Code: "KGS", Name: "Som", DecimalPlaces: 2}
+	LAK = CurrencyCode{Code: "LAK", Name: "Lao Kip", DecimalPlaces: 2}
+	LBP = CurrencyCode{Code: "LBP", Name: "Lebanese Pound", DecimalPlaces: 2}
+	LSL = CurrencyCode{Code: "LSL", Name: "Loti", DecimalPlaces: 2}
+	ZAR = CurrencyCode{Code: "ZAR", Name: "Rand", DecimalPlaces: 2}
+	LRD = CurrencyCode{Code: "LRD", Name: "Liberian Dollar", DecimalPlaces: 2}
+	LYD = CurrencyCode{Code: "LYD", Name: "Libyan Dinar", DecimalPlaces: 3}
+	CHF = CurrencyCode{Code: "CHF", Name: "Swiss Franc", DecimalPlaces: 2}
+	MOP = CurrencyCode{Code: "MOP", Name: "Pataca", DecimalPlaces: 2}
+	MKD = CurrencyCode{Code: "MKD", Name: "Denar", DecimalPlaces: 2}
+	MGA = CurrencyCode{Code: "MGA", Name: "Malagasy Ariary", DecimalPlaces: 2}
+	MWK = CurrencyCode{Code: "MWK", Name: "Malawi Kwacha", DecimalPlaces: 2}
+	MYR = CurrencyCode{Code: "MYR", Name: "Malaysian Ringgit", DecimalPlaces: 2}
+	MVR = CurrencyCode{Code: "MVR", Name: "Rufiyaa", DecimalPlaces: 2}
+	MRU = CurrencyCode{Code: "MRU", Name: "Ouguiya", DecimalPlaces: 2}
+	MUR = CurrencyCode{Code: "MUR", Name: "Mauritius Rupee", DecimalPlaces: 2}
+	XUA = CurrencyCode{Code: "XUA", Name: "ADB Unit of Account", DecimalPlaces: 0}
+	MXN = CurrencyCode{Code: "MXN", Name: "Mexican Peso", DecimalPlaces: 2}
+	MXV = CurrencyCode{Code: "MXV", Name: "Mexican Unidad de Inversion (UDI)", DecimalPlaces: 2}
+	MDL = CurrencyCode{Code: "MDL", Name: "Moldovan Leu", DecimalPlaces: 2}
+	MNT = CurrencyCode{Code: "MNT", Name: "Tugrik", DecimalPlaces: 2}
+	MAD = CurrencyCode{Code: "MAD", Name: "Moroccan Dirham", DecimalPlaces: 2}
+	MZN = CurrencyCode{Code: "MZN", Name: "Mozambique Metical", DecimalPlaces: 2}
+	MMK = CurrencyCode{Code: "MMK", Name: "Kyat", DecimalPlaces: 2}
+	NAD = CurrencyCode{Code: "NAD", Name: "Namibia Dollar", DecimalPlaces: 2}
+	NPR = CurrencyCode{Code: "NPR", Name: "Nepalese Rupee", DecimalPlaces: 2}
+	NIO = CurrencyCode{Code: "NIO", Name: "Cordoba Oro", DecimalPlaces: 2}
+	NGN = CurrencyCode{Code: "NGN", Name: "Naira", DecimalPlaces: 2}
+	OMR = CurrencyCode{Code: "OMR", Name: "Rial Omani", DecimalPlaces: 3}
+	PKR = CurrencyCode{Code: "PKR", Name: "Pakistan Rupee", DecimalPlaces: 2}
+	PAB = CurrencyCode{Code: "PAB", Name: "Balboa", DecimalPlaces: 2}
+	PGK = CurrencyCode{Code: "PGK", Name: "Kina", DecimalPlaces: 2}
+	PYG = CurrencyCode{Code: "PYG", Name: "Guarani", DecimalPlaces: 0}
+	PEN = CurrencyCode{Code: "PEN", Name: "Sol", DecimalPlaces: 2}
+	PHP = CurrencyCode{Code: "PHP", Name: "Philippine Peso", DecimalPlaces: 2}
+	PLN = CurrencyCode{Code: "PLN", Name: "Zloty", DecimalPlaces: 2}
+	QAR = CurrencyCode{Code: "QAR", Name: "Qatari Rial", DecimalPlaces: 2}
+	RON = CurrencyCode{Code: "RON", Name: "Romanian Leu", DecimalPlaces: 2}
+	RUB = CurrencyCode{Code: "RUB", Name: "Russian Ruble", DecimalPlaces: 2}
+	RWF = CurrencyCode{Code: "RWF", Name: "Rwanda Franc", DecimalPlaces: 0}
+	SHP = CurrencyCode{Code: "SHP", Name: "Saint Helena Pound", DecimalPlaces: 2}
+	WST = CurrencyCode{Code: "WST", Name: "Tala", DecimalPlaces: 2}
+	STN = CurrencyCode{Code: "STN", Name: "Dobra", DecimalPlaces: 2}
+	SAR = CurrencyCode{Code: "SAR", Name: "Saudi Riyal", DecimalPlaces: 2}
+	RSD = CurrencyCode{Code: "RSD", Name: "Serbian Dinar", DecimalPlaces: 2}
+	SCR = CurrencyCode{Code: "SCR", Name: "Seychelles Rupee", DecimalPlaces: 2}
+	SLL = CurrencyCode{Code: "SLL", Name: "Leone", DecimalPlaces: 2}
+	SGD = CurrencyCode{Code: "SGD", Name: "Singapore Dollar", DecimalPlaces: 2}
+	XSU = CurrencyCode{Code: "XSU", Name: "Sucre", DecimalPlaces: 0}
+	SBD = CurrencyCode{Code: "SBD", Name: "Solomon Islands Dollar", DecimalPlaces: 2}
+	SOS = CurrencyCode{Code: "SOS", Name: "Somali Shilling", DecimalPlaces: 2}
+	SSP = CurrencyCode{Code: "SSP", Name: "South Sudanese Pound", DecimalPlaces: 2}
+	LKR = CurrencyCode{Code: "LKR", Name: "Sri Lanka Rupee", DecimalPlaces: 2}
+	SDG = CurrencyCode{Code: "SDG", Name: "Sudanese Pound", DecimalPlaces: 2}
+	SRD = CurrencyCode{Code: "SRD", Name: "Surinam Dollar", DecimalPlaces: 2}
+	SEK = CurrencyCode{Code: "SEK", Name: "Swedish Krona", DecimalPlaces: 2}
+	CHE = CurrencyCode{Code: "CHE", Name: "WIR Euro", DecimalPlaces: 2}
+	CHW = CurrencyCode{Code: "CHW", Name: "WIR Franc", DecimalPlaces: 2}
+	SYP = CurrencyCode{Code: "SYP", Name: "Syrian Pound", DecimalPlaces: 2}
+	TWD = CurrencyCode{Code: "TWD", Name: "New Taiwan Dollar", DecimalPlaces: 2}
+	TJS = CurrencyCode{Code: "TJS", Name: "Somoni", DecimalPlaces: 2}
+	TZS = CurrencyCode{Code: "TZS", Name: "Tanzanian Shilling", DecimalPlaces: 2}
+	THB = CurrencyCode{Code: "THB", Name: "Baht", DecimalPlaces: 2}
+	TOP = CurrencyCode{Code: "TOP", Name: "Pa'anga", DecimalPlaces: 2}
+	TTD = CurrencyCode{Code: "TTD", Name: "Trinidad and Tobago Dollar", DecimalPlaces: 2}
+	TND = CurrencyCode{Code: "TND", Name: "Tunisian Dinar", DecimalPlaces: 3}
+	TRY = CurrencyCode{Code: "TRY", Name: "Turkish Lira", DecimalPlaces: 2}
+	TMT = CurrencyCode{Code: "TMT", Name: "Turkmenistan New Manat", DecimalPlaces: 2}
+	UGX = CurrencyCode{Code: "UGX", Name: "Uganda Shilling", DecimalPlaces: 0}
+	UAH = CurrencyCode{Code: "UAH", Name: "Hryvnia", DecimalPlaces: 2}
+	AED = CurrencyCode{Code: "AED", Name: "UAE Dirham", DecimalPlaces: 2}
+	USN = CurrencyCode{Code: "USN", Name: "US Dollar (Next day)", DecimalPlaces: 2}
+	UYU = CurrencyCode{Code: "UYU", Name: "Peso Uruguayo", DecimalPlaces: 2}
+	UYI = CurrencyCode{Code: "UYI", Name: "Uruguay Peso en Unidades Indexadas (UI)", DecimalPlaces: 0}
+	UYW = CurrencyCode{Code: "UYW", Name: "Unidad Previsional", DecimalPlaces: 4}
+	UZS = CurrencyCode{Code: "UZS", Name: "Uzbekistan Sum", DecimalPlaces: 2}
+	VUV = CurrencyCode{Code: "VUV", Name: "Vatu", DecimalPlaces: 0}
+	VES = CurrencyCode{Code: "VES", Name: "Bolívar Soberano", DecimalPlaces: 2}
+	VND = CurrencyCode{Code: "VND", Name: "Dong", DecimalPlaces: 0}
+	YER = CurrencyCode{Code: "YER", Name: "Yemeni Rial", DecimalPlaces: 2}
+	ZMW = CurrencyCode{Code: "ZMW", Name: "Zambian Kwacha", DecimalPlaces: 2}
+	ZWL = CurrencyCode{Code: "ZWL", Name: "Zimbabwe Dollar", DecimalPlaces: 2}
+	XBA = CurrencyCode{Code: "XBA", Name: "Bond Markets Unit European Composite Unit (EURCO)", DecimalPlaces: 0}
+	XBB = CurrencyCode{Code: "XBB", Name: "Bond Markets Unit European Monetary Unit (E.M.U.-6)", DecimalPlaces: 0}
+	XBC = CurrencyCode{Code: "XBC", Name: "Bond Markets Unit European Unit of Account 9 (E.U.A.-9)", DecimalPlaces: 0}
+	XBD = CurrencyCode{Code: "XBD", Name: "Bond Markets Unit European Unit of Account 17 (E.U.A.-17)", DecimalPlaces: 0}
+	XTS = CurrencyCode{Code: "XTS", Name: "Codes specifically reserved for testing purposes", DecimalPlaces: 0}
+	XXX = CurrencyCode{Code: "XXX", Name: "The codes assigned for transactions where no currency is involved", DecimalPlaces: 0}
+	XAU = CurrencyCode{Code: "XAU", Name: "Gold", DecimalPlaces: 0}
+	XPD = CurrencyCode{Code: "XPD", Name: "Palladium", DecimalPlaces: 0}
+	XPT = CurrencyCode{Code: "XPT", Name: "Platinum", DecimalPlaces: 0}
+	XAG = CurrencyCode{Code: "XAG", Name: "Silver", DecimalPlaces: 0}
 )
 
 var lookupTable = map[string]CurrencyCode{
@@ -516,127 +397,4 @@ var lookupTable = map[string]CurrencyCode{
 	"XPD": XPD, // Palladium
 	"XPT": XPT, // Platinum
 	"XAG": XAG, // Silver
-	"AFA": AFA, // Afghani
-	"FIM": FIM, // Markka
-	"ALK": ALK, // Old Lek
-	"ADP": ADP, // Andorran Peseta
-	"ESP": ESP, // Spanish Peseta
-	"FRF": FRF, // French Franc
-	"AOK": AOK, // Kwanza
-	"AON": AON, // New Kwanza
-	"AOR": AOR, // Kwanza Reajustado
-	"ARA": ARA, // Austral
-	"ARP": ARP, // Peso Argentino
-	"ARY": ARY, // Peso
-	"RUR": RUR, // Russian Ruble
-	"ATS": ATS, // Schilling
-	"AYM": AYM, // Azerbaijan Manat
-	"AZM": AZM, // Azerbaijanian Manat
-	"BYB": BYB, // Belarusian Ruble
-	"BYR": BYR, // Belarusian Ruble
-	"BEC": BEC, // Convertible Franc
-	"BEF": BEF, // Belgian Franc
-	"BEL": BEL, // Financial Franc
-	"BOP": BOP, // Peso boliviano
-	"BAD": BAD, // Dinar
-	"BRB": BRB, // Cruzeiro
-	"BRC": BRC, // Cruzado
-	"BRE": BRE, // Cruzeiro
-	"BRN": BRN, // New Cruzado
-	"BRR": BRR, // Cruzeiro Real
-	"BGJ": BGJ, // Lev A/52
-	"BGK": BGK, // Lev A/62
-	"BGL": BGL, // Lev
-	"BUK": BUK, // Kyat
-	"HRD": HRD, // Croatian Dinar
-	"CYP": CYP, // Cyprus Pound
-	"CSJ": CSJ, // Krona A/53
-	"CSK": CSK, // Koruna
-	"ECS": ECS, // Sucre
-	"ECV": ECV, // Unidad de Valor Constante (UVC)
-	"GQE": GQE, // Ekwele
-	"EEK": EEK, // Kroon
-	"XEU": XEU, // European Currency Unit (E.C.U)
-	"GEK": GEK, // Georgian Coupon
-	"DDM": DDM, // Mark der DDR
-	"DEM": DEM, // Deutsche Mark
-	"GHC": GHC, // Cedi
-	"GHP": GHP, // Ghana Cedi
-	"GRD": GRD, // Drachma
-	"GNE": GNE, // Syli
-	"GNS": GNS, // Syli
-	"GWE": GWE, // Guinea Escudo
-	"GWP": GWP, // Guinea-Bissau Peso
-	"ITL": ITL, // Italian Lira
-	"ISJ": ISJ, // Old Krona
-	"IEP": IEP, // Irish Pound
-	"ILP": ILP, // Pound
-	"ILR": ILR, // Old Shekel
-	"LAJ": LAJ, // Pathet Lao Kip
-	"LVL": LVL, // Latvian Lats
-	"LVR": LVR, // Latvian Ruble
-	"LSM": LSM, // Loti
-	"ZAL": ZAL, // Financial Rand
-	"LTL": LTL, // Lithuanian Litas
-	"LTT": LTT, // Talonas
-	"LUC": LUC, // Luxembourg Convertible Franc
-	"LUF": LUF, // Luxembourg Franc
-	"LUL": LUL, // Luxembourg Financial Franc
-	"MGF": MGF, // Malagasy Franc
-	"MVQ": MVQ, // Maldive Rupee
-	"MLF": MLF, // Mali Franc
-	"MTL": MTL, // Maltese Lira
-	"MTP": MTP, // Maltese Pound
-	"MRO": MRO, // Ouguiya
-	"MXP": MXP, // Mexican Peso
-	"MZE": MZE, // Mozambique Escudo
-	"MZM": MZM, // Mozambique Metical
-	"NLG": NLG, // Netherlands Guilder
-	"NIC": NIC, // Cordoba
-	"PEH": PEH, // Sol
-	"PEI": PEI, // Inti
-	"PES": PES, // Sol
-	"PLZ": PLZ, // Zloty
-	"PTE": PTE, // Portuguese Escudo
-	"ROK": ROK, // Leu A/52
-	"ROL": ROL, // Old Leu
-	"STD": STD, // Dobra
-	"CSD": CSD, // Serbian Dinar
-	"SKK": SKK, // Slovak Koruna
-	"SIT": SIT, // Tolar
-	"RHD": RHD, // Rhodesian Dollar
-	"ESA": ESA, // Spanish Peseta
-	"ESB": ESB, // A Account (convertible Peseta Account)
-	"SDD": SDD, // Sudanese Dinar
-	"SDP": SDP, // Sudanese Pound
-	"SRG": SRG, // Surinam Guilder
-	"CHC": CHC, // WIR Franc (for electronic)
-	"TJR": TJR, // Tajik Ruble
-	"TPE": TPE, // Timor Escudo
-	"TRL": TRL, // Old Turkish Lira
-	"TMM": TMM, // Turkmenistan Manat
-	"UGS": UGS, // Uganda Shilling
-	"UGW": UGW, // Old Shilling
-	"UAK": UAK, // Karbovanet
-	"SUR": SUR, // Rouble
-	"USS": USS, // US Dollar (Same day)
-	"UYN": UYN, // Old Uruguay Peso
-	"UYP": UYP, // Uruguayan Peso
-	"VEB": VEB, // Bolivar
-	"VEF": VEF, // Bolivar Fuerte
-	"VNC": VNC, // Old Dong
-	"YDD": YDD, // Yemeni Dinar
-	"YUD": YUD, // New Yugoslavian Dinar
-	"YUM": YUM, // New Dinar
-	"YUN": YUN, // Yugoslavian Dinar
-	"ZRN": ZRN, // New Zaire
-	"ZRZ": ZRZ, // Zaire
-	"ZMK": ZMK, // Zambian Kwacha
-	"ZWC": ZWC, // Rhodesian Dollar
-	"ZWD": ZWD, // Zimbabwe Dollar (old)
-	"ZWN": ZWN, // Zimbabwe Dollar (new)
-	"ZWR": ZWR, // Zimbabwe Dollar
-	"XFO": XFO, // Gold-Franc
-	"XRE": XRE, // RINET Funds Code
-	"XFU": XFU, // UIC-Franc
 }

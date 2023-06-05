@@ -40,6 +40,7 @@ import (
 	"os"
 	"os/user"
 	"runtime"
+	"strconv"
 	"strings"
 	"time"
 )
@@ -53,8 +54,9 @@ var (
 
 // {"AlphabeticCode": "AFN", "Currency": "Afghani", ... }
 type currency struct {
-	Code string `json:"AlphabeticCode"`
-	Name string `json:"Currency"`
+	Code      string `json:"AlphabeticCode"`
+	Name      string `json:"Currency"`
+	MinorUnit string `json:"MinorUnit"`
 }
 
 func main() {
@@ -88,6 +90,10 @@ package iso4217
 
 type CurrencyCode struct {
     Code, Name string
+
+    // DecimalPlaces represents the integer value of a currency's minor unit.
+	// DecimalPlaces is 0 if the currency doesn't have a minor unit.
+    DecimalPlaces int
 }
 
 func (cc CurrencyCode) String() string {
@@ -123,16 +129,26 @@ func (cc CurrencyCode) Valid() bool {
 	fmt.Fprintln(&lookupBuffer, "var lookupTable = map[string]CurrencyCode{")
 
 	for i := range currencies {
-		code, name := currencies[i].Code, currencies[i].Name
-		if code == "" || name == "" {
-			fmt.Printf("SKIPPING: code=%q currency=%q\n", code, name)
+		code, name, minorunit := currencies[i].Code, currencies[i].Name, currencies[i].MinorUnit
+		if code == "" || name == "" || minorunit == "" {
+			fmt.Printf("SKIPPING: code=%q currency=%q minorunit=%q\n", code, name, minorunit)
 			continue
 		}
 		name = charCleaner.Replace(name)
+		minorunit = charCleaner.Replace(minorunit)
 		if _, exists := cs[code]; !exists {
 			cs[code] = true // mark as seen
 
-			fmt.Fprintf(&varBuffer, fmt.Sprintf(`  %s = CurrencyCode{Code: "%s", Name: "%s"}`+"\n", code, code, name))
+			decimalPlaces := 0
+			if minorunit != "-" {
+				d, err := strconv.Atoi(minorunit)
+				if err != nil {
+					log.Fatalf("error while parsing currency minor unit: %v", err)
+				}
+				decimalPlaces = d
+			}
+
+			fmt.Fprintf(&varBuffer, fmt.Sprintf(`  %s = CurrencyCode{Code: "%s", Name: "%s", DecimalPlaces: %d}`+"\n", code, code, name, decimalPlaces))
 			// fmt.Fprintf(&varBuffer, fmt.Sprintf(`  %s CurrencyCode = "%s" // %s`+"\n", code, code, name))
 			fmt.Fprintf(&lookupBuffer, fmt.Sprintf(`"%s": %s, // %s`+"\n", code, code, name))
 		}
