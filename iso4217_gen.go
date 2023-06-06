@@ -91,9 +91,9 @@ package iso4217
 type CurrencyCode struct {
     Code, Name string
 
-    // DecimalPlaces represents the integer value of a currency's minor unit.
+    // DecimalPlaces represents the unsigned integer value of a currency's minor unit.
 	// DecimalPlaces is 0 if the currency doesn't have a minor unit.
-    DecimalPlaces int
+    DecimalPlaces uint8
 }
 
 func (cc CurrencyCode) String() string {
@@ -139,13 +139,13 @@ func (cc CurrencyCode) Valid() bool {
 		if _, exists := cs[code]; !exists {
 			cs[code] = true // mark as seen
 
-			decimalPlaces := 0
+			var decimalPlaces uint8 = 0
 			if minorunit != "-" {
 				d, err := strconv.Atoi(minorunit)
 				if err != nil {
 					log.Fatalf("error while parsing currency minor unit: %v", err)
 				}
-				decimalPlaces = d
+				decimalPlaces = uint8(d)
 			}
 
 			fmt.Fprintf(&varBuffer, fmt.Sprintf(`  %s = CurrencyCode{Code: "%s", Name: "%s", DecimalPlaces: %d}`+"\n", code, code, name, decimalPlaces))

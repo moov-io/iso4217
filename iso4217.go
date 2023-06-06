@@ -15,15 +15,15 @@
 // specific language governing permissions and limitations
 // under the License.
 
-// Generated on 2023-06-05T05:08:58Z by raphaelsantodomingo, any modifications will be overwritten
+// Generated on 2023-06-06T10:44:06Z by raphaelsantodomingo, any modifications will be overwritten
 package iso4217
 
 type CurrencyCode struct {
 	Code, Name string
 
-	// DecimalPlaces represents the integer value of a currency's minor unit.
+	// DecimalPlaces represents the unsigned integer value of a currency's minor unit.
 	// DecimalPlaces is 0 if the currency doesn't have a minor unit.
-	DecimalPlaces int
+	DecimalPlaces uint8
 }
 
 func (cc CurrencyCode) String() string {
