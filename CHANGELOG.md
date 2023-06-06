@@ -1,3 +1,9 @@
+## v0.2.1 (Released 2023-06-06)
+
+UPDATES
+
+- update `DecimalPlaces` type to be `uint8` instead of `int`
+
 ## v0.2.0 (Released 2023-06-05)
 
 IMPROVEMENTS
