@@ -46,6 +46,11 @@ func TestValidate(t *testing.T) {
 	_, exists = iso4217.Lookup("840")
 	assert.True(t, exists)
 
-	_, exists = iso4217.Lookup("36")
+	cc, exists := iso4217.Lookup("36")
 	assert.True(t, exists)
+	assert.Equal(t, "AUD", cc.Code)
+
+	cc, exists = iso4217.Lookup("036")
+	assert.True(t, exists)
+	assert.Equal(t, "AUD", cc.Code)
 }

@@ -18,7 +18,7 @@
 package iso4217
 
 import (
-	"strconv"
+	"fmt"
 	"strings"
 )
 
@@ -27,17 +27,10 @@ import (
 //
 // Example: "USD"
 func Lookup(code string) (CurrencyCode, bool) {
-	// attempt alphanumeric lookup first
-	if cc, exists := lookupTable[strings.ToUpper(code)]; exists {
-		return cc, exists
-	}
-
-	// no matches found, attempt numeric lookup
-	numeric, err := strconv.Atoi(code)
-	if err != nil {
-		return CurrencyCode{}, false
-	}
-
-	cc, exists := numericLookupTable[numeric]
+	cc, exists := lookupTable[normalize(code)]
 	return cc, exists
+}
+
+func normalize(code string) string {
+	return strings.ToUpper(fmt.Sprintf("%03s", strings.TrimSpace(code)))
 }
