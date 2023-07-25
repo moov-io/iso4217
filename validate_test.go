@@ -26,6 +26,7 @@ import (
 )
 
 func TestValidate(t *testing.T) {
+	// alphanumeric codes
 	_, exists := iso4217.Lookup("USD")
 	assert.True(t, exists)
 
@@ -37,4 +38,14 @@ func TestValidate(t *testing.T) {
 
 	_, exists = iso4217.Lookup("QZA")
 	assert.False(t, exists)
+
+	// numeric codes
+	_, exists = iso4217.Lookup("0")
+	assert.False(t, exists)
+
+	_, exists = iso4217.Lookup("840")
+	assert.True(t, exists)
+
+	_, exists = iso4217.Lookup("36")
+	assert.True(t, exists)
 }
