@@ -1,3 +1,9 @@
+## v0.3.0 (Released 2023-07-26)
+
+IMPROVEMENTS
+
+- feat: Add support for numeric codes in CurrencyCode lookup
+
 ## v0.2.1 (Released 2023-06-06)
 
 UPDATES
