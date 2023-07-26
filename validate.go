@@ -18,14 +18,19 @@
 package iso4217
 
 import (
+	"fmt"
 	"strings"
 )
 
-// Lookup returns a CurrencyCode when code is a valid ISO 4217 code
-// and a boolean.
+// Lookup returns the corresponding ISO 4217 CurrencyCode for a numeric or alphanumeric code, and a
+// boolean indicating whether a match was found.
 //
 // Example: "USD"
 func Lookup(code string) (CurrencyCode, bool) {
-	cc, exists := lookupTable[strings.ToUpper(code)]
+	cc, exists := lookupTable[normalize(code)]
 	return cc, exists
+}
+
+func normalize(code string) string {
+	return strings.ToUpper(fmt.Sprintf("%03s", strings.TrimSpace(code)))
 }

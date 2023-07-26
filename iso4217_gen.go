@@ -52,11 +52,12 @@ var (
 	charCleaner = strings.NewReplacer(`"`, ``, `’`, `'`, `’`, `'`, `“`, `"`, `”`, `"`, `\`, ``)
 )
 
-// {"AlphabeticCode": "AFN", "Currency": "Afghani", ... }
+// {"AlphabeticCode": "AFN", "NumericCode": 971.0, "Currency": "Afghani", ... }
 type currency struct {
-	Code      string `json:"AlphabeticCode"`
-	Name      string `json:"Currency"`
-	MinorUnit string `json:"MinorUnit"`
+	Code        string  `json:"AlphabeticCode"`
+	NumericCode float64 `json:"NumericCode"`
+	Name        string  `json:"Currency"`
+	MinorUnit   string  `json:"MinorUnit"`
 }
 
 func main() {
@@ -89,7 +90,7 @@ func main() {
 package iso4217
 
 type CurrencyCode struct {
-    Code, Name string
+    Code, NumericCode, Name string
 
     // DecimalPlaces represents the unsigned integer value of a currency's minor unit.
 	// DecimalPlaces is 0 if the currency doesn't have a minor unit.
@@ -128,12 +129,15 @@ func (cc CurrencyCode) Valid() bool {
 	var lookupBuffer bytes.Buffer
 	fmt.Fprintln(&lookupBuffer, "var lookupTable = map[string]CurrencyCode{")
 
+	var skipCount int
 	for i := range currencies {
 		code, name, minorunit := currencies[i].Code, currencies[i].Name, currencies[i].MinorUnit
 		if code == "" || name == "" || minorunit == "" {
 			fmt.Printf("SKIPPING: code=%q currency=%q minorunit=%q\n", code, name, minorunit)
+			skipCount++
 			continue
 		}
+
 		name = charCleaner.Replace(name)
 		minorunit = charCleaner.Replace(minorunit)
 		if _, exists := cs[code]; !exists {
@@ -148,11 +152,14 @@ func (cc CurrencyCode) Valid() bool {
 				decimalPlaces = uint8(d)
 			}
 
-			fmt.Fprintf(&varBuffer, fmt.Sprintf(`  %s = CurrencyCode{Code: "%s", Name: "%s", DecimalPlaces: %d}`+"\n", code, code, name, decimalPlaces))
-			// fmt.Fprintf(&varBuffer, fmt.Sprintf(`  %s CurrencyCode = "%s" // %s`+"\n", code, code, name))
+			numericCode := fmt.Sprintf("%03d", int(currencies[i].NumericCode))
+			fmt.Fprintf(&varBuffer, fmt.Sprintf(`  %s = CurrencyCode{Code: "%s", NumericCode: "%s", Name: "%s", DecimalPlaces: %d}`+"\n", code, code, numericCode, name, decimalPlaces))
 			fmt.Fprintf(&lookupBuffer, fmt.Sprintf(`"%s": %s, // %s`+"\n", code, code, name))
+			fmt.Fprintf(&lookupBuffer, fmt.Sprintf(`"%s": %s, // %s`+"\n", numericCode, code, name))
 		}
 	}
+	fmt.Printf("Skipped %d currencies\n", skipCount)
+
 	fmt.Fprintln(&varBuffer, ")")
 	fmt.Fprintln(&lookupBuffer, "}")
 
