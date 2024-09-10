@@ -205,6 +205,7 @@ var (
 	YER = CurrencyCode{Code: "YER", NumericCode: "886", Name: "Yemeni Rial", DecimalPlaces: 2}
 	ZMW = CurrencyCode{Code: "ZMW", NumericCode: "967", Name: "Zambian Kwacha", DecimalPlaces: 2}
 	ZWL = CurrencyCode{Code: "ZWL", NumericCode: "932", Name: "Zimbabwe Dollar", DecimalPlaces: 2}
+	ZWG = CurrencyCode{Code: "ZWG", NumericCode: "924", Name: "Zimbabwe Gold", DecimalPlaces: 2}
 	XBA = CurrencyCode{Code: "XBA", NumericCode: "955", Name: "Bond Markets Unit European Composite Unit (EURCO)", DecimalPlaces: 0}
 	XBB = CurrencyCode{Code: "XBB", NumericCode: "956", Name: "Bond Markets Unit European Monetary Unit (E.M.U.-6)", DecimalPlaces: 0}
 	XBC = CurrencyCode{Code: "XBC", NumericCode: "957", Name: "Bond Markets Unit European Unit of Account 9 (E.U.A.-9)", DecimalPlaces: 0}
@@ -556,6 +557,8 @@ var lookupTable = map[string]CurrencyCode{
 	"967": ZMW, // Zambian Kwacha
 	"ZWL": ZWL, // Zimbabwe Dollar
 	"932": ZWL, // Zimbabwe Dollar
+	"ZWG": ZWG, // Zimbabwe Gold
+	"924": ZWG, // Zimbabwe Gold
 	"XBA": XBA, // Bond Markets Unit European Composite Unit (EURCO)
 	"955": XBA, // Bond Markets Unit European Composite Unit (EURCO)
 	"XBB": XBB, // Bond Markets Unit European Monetary Unit (E.M.U.-6)
