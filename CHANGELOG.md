@@ -1,4 +1,11 @@
-## v0.3.1 (Released 2023-09-10)
+## v0.3.2 (Released 2024-09-10)
+
+Improvements
+
+- Add new Yuan Fen currency code (CNH)
+- Update dependencies
+
+## v0.3.1 (Released 2024-09-10)
 
 IMPROVEMENTS
 
