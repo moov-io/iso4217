@@ -12,10 +12,6 @@ endif
 clean:
 	@rm -rf ./bin/ ./tmp/ coverage.txt misspell* staticcheck lint-project.sh
 
-.PHONY: generate
-generate: clean
-	@go run iso4217_gen.go
-
 .PHONY: cover-test cover-web
 cover-test:
 	go test -coverprofile=cover.out ./...

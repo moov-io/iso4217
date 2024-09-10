@@ -15,7 +15,6 @@
 // specific language governing permissions and limitations
 // under the License.
 
-// Generated on 2023-07-25T04:47:20Z by daniel, any modifications will be overwritten
 package iso4217
 
 type CurrencyCode struct {
@@ -75,6 +74,7 @@ var (
 	CLP = CurrencyCode{Code: "CLP", NumericCode: "152", Name: "Chilean Peso", DecimalPlaces: 0}
 	CLF = CurrencyCode{Code: "CLF", NumericCode: "990", Name: "Unidad de Fomento", DecimalPlaces: 4}
 	CNY = CurrencyCode{Code: "CNY", NumericCode: "156", Name: "Yuan Renminbi", DecimalPlaces: 2}
+	CNH = CurrencyCode{Code: "CNH", NumericCode: "157", Name: "Yuan Fen", DecimalPlaces: 2}
 	COP = CurrencyCode{Code: "COP", NumericCode: "170", Name: "Colombian Peso", DecimalPlaces: 2}
 	COU = CurrencyCode{Code: "COU", NumericCode: "970", Name: "Unidad de Valor Real", DecimalPlaces: 2}
 	KMF = CurrencyCode{Code: "KMF", NumericCode: "174", Name: "Comorian Franc", DecimalPlaces: 0}
@@ -297,6 +297,8 @@ var lookupTable = map[string]CurrencyCode{
 	"990": CLF, // Unidad de Fomento
 	"CNY": CNY, // Yuan Renminbi
 	"156": CNY, // Yuan Renminbi
+	"CNH": CNH, // Yuan Fen
+	"157": CNH, // Yuan Fen
 	"COP": COP, // Colombian Peso
 	"170": COP, // Colombian Peso
 	"COU": COU, // Unidad de Valor Real
