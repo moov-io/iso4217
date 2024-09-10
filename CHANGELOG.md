@@ -1,3 +1,9 @@
+## v0.3.1 (Released 2023-09-10)
+
+IMPROVEMENTS
+
+- Add new Zimbabwe Gold currency code (ZWG)
+
 ## v0.3.0 (Released 2023-07-26)
 
 IMPROVEMENTS
