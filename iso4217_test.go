@@ -79,3 +79,21 @@ func TestWithdrawnPredecessorsRetained(t *testing.T) {
 		assert.Truef(t, exists, "Lookup(%q)", code)
 	}
 }
+
+func TestCurrencyCodeString(t *testing.T) {
+	assert.Equal(t, "USD", iso4217.USD.String())
+	assert.Equal(t, "EUR", iso4217.EUR.String())
+
+	cc, exists := iso4217.Lookup("AUD")
+	assert.True(t, exists)
+	assert.Equal(t, "AUD", cc.String())
+}
+
+func TestCurrencyCodeValid(t *testing.T) {
+	assert.True(t, iso4217.USD.Valid())
+	assert.True(t, iso4217.EUR.Valid())
+
+	// Zero-value and unknown codes are invalid.
+	assert.False(t, iso4217.CurrencyCode{}.Valid())
+	assert.False(t, iso4217.CurrencyCode{Code: "QZA"}.Valid())
+}
