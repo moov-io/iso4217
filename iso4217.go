@@ -85,6 +85,7 @@ var (
 	CUP = CurrencyCode{Code: "CUP", NumericCode: "192", Name: "Cuban Peso", DecimalPlaces: 2}
 	CUC = CurrencyCode{Code: "CUC", NumericCode: "931", Name: "Peso Convertible", DecimalPlaces: 2}
 	ANG = CurrencyCode{Code: "ANG", NumericCode: "532", Name: "Netherlands Antillean Guilder", DecimalPlaces: 2}
+	XCG = CurrencyCode{Code: "XCG", NumericCode: "532", Name: "Caribbean Guilder", DecimalPlaces: 2}
 	CZK = CurrencyCode{Code: "CZK", NumericCode: "203", Name: "Czech Koruna", DecimalPlaces: 2}
 	DKK = CurrencyCode{Code: "DKK", NumericCode: "208", Name: "Danish Krone", DecimalPlaces: 2}
 	DJF = CurrencyCode{Code: "DJF", NumericCode: "262", Name: "Djibouti Franc", DecimalPlaces: 0}
@@ -170,8 +171,10 @@ var (
 	RSD = CurrencyCode{Code: "RSD", NumericCode: "941", Name: "Serbian Dinar", DecimalPlaces: 2}
 	SCR = CurrencyCode{Code: "SCR", NumericCode: "690", Name: "Seychelles Rupee", DecimalPlaces: 2}
 	SLL = CurrencyCode{Code: "SLL", NumericCode: "694", Name: "Leone", DecimalPlaces: 2}
+	SLE = CurrencyCode{Code: "SLE", NumericCode: "925", Name: "Leone", DecimalPlaces: 2}
 	SGD = CurrencyCode{Code: "SGD", NumericCode: "702", Name: "Singapore Dollar", DecimalPlaces: 2}
 	XSU = CurrencyCode{Code: "XSU", NumericCode: "994", Name: "Sucre", DecimalPlaces: 0}
+	XAD = CurrencyCode{Code: "XAD", NumericCode: "396", Name: "Arab Accounting Dinar", DecimalPlaces: 2}
 	SBD = CurrencyCode{Code: "SBD", NumericCode: "090", Name: "Solomon Islands Dollar", DecimalPlaces: 2}
 	SOS = CurrencyCode{Code: "SOS", NumericCode: "706", Name: "Somali Shilling", DecimalPlaces: 2}
 	SSP = CurrencyCode{Code: "SSP", NumericCode: "728", Name: "South Sudanese Pound", DecimalPlaces: 2}
@@ -201,6 +204,7 @@ var (
 	UZS = CurrencyCode{Code: "UZS", NumericCode: "860", Name: "Uzbekistan Sum", DecimalPlaces: 2}
 	VUV = CurrencyCode{Code: "VUV", NumericCode: "548", Name: "Vatu", DecimalPlaces: 0}
 	VES = CurrencyCode{Code: "VES", NumericCode: "928", Name: "Bolívar Soberano", DecimalPlaces: 2}
+	VED = CurrencyCode{Code: "VED", NumericCode: "926", Name: "Bolívar Soberano", DecimalPlaces: 2}
 	VND = CurrencyCode{Code: "VND", NumericCode: "704", Name: "Dong", DecimalPlaces: 0}
 	YER = CurrencyCode{Code: "YER", NumericCode: "886", Name: "Yemeni Rial", DecimalPlaces: 2}
 	ZMW = CurrencyCode{Code: "ZMW", NumericCode: "967", Name: "Zambian Kwacha", DecimalPlaces: 2}
@@ -317,8 +321,9 @@ var lookupTable = map[string]CurrencyCode{
 	"192": CUP, // Cuban Peso
 	"CUC": CUC, // Peso Convertible
 	"931": CUC, // Peso Convertible
-	"ANG": ANG, // Netherlands Antillean Guilder
-	"532": ANG, // Netherlands Antillean Guilder
+	"ANG": ANG, // Netherlands Antillean Guilder (withdrawn; succeeded by XCG)
+	"XCG": XCG, // Caribbean Guilder
+	"532": XCG, // Caribbean Guilder (532 reassigned from the withdrawn ANG)
 	"CZK": CZK, // Czech Koruna
 	"203": CZK, // Czech Koruna
 	"DKK": DKK, // Danish Krone
@@ -489,10 +494,14 @@ var lookupTable = map[string]CurrencyCode{
 	"690": SCR, // Seychelles Rupee
 	"SLL": SLL, // Leone
 	"694": SLL, // Leone
+	"SLE": SLE, // Leone
+	"925": SLE, // Leone
 	"SGD": SGD, // Singapore Dollar
 	"702": SGD, // Singapore Dollar
 	"XSU": XSU, // Sucre
 	"994": XSU, // Sucre
+	"XAD": XAD, // Arab Accounting Dinar
+	"396": XAD, // Arab Accounting Dinar
 	"SBD": SBD, // Solomon Islands Dollar
 	"090": SBD, // Solomon Islands Dollar
 	"SOS": SOS, // Somali Shilling
@@ -551,6 +560,8 @@ var lookupTable = map[string]CurrencyCode{
 	"548": VUV, // Vatu
 	"VES": VES, // Bolívar Soberano
 	"928": VES, // Bolívar Soberano
+	"VED": VED, // Bolívar Soberano
+	"926": VED, // Bolívar Soberano
 	"VND": VND, // Dong
 	"704": VND, // Dong
 	"YER": YER, // Yemeni Rial
