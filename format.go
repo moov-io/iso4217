@@ -19,7 +19,6 @@ package iso4217
 
 import (
 	"fmt"
-	"math"
 	"strconv"
 	"strings"
 )
@@ -34,29 +33,20 @@ import (
 //	FormatMinor(-150, USD)   // "-1.50"
 func FormatMinor(minor int64, cc CurrencyCode) string {
 	places := int(cc.DecimalPlaces)
-	negative := minor < 0
-	var mag uint64
-	if minor >= 0 {
-		mag = uint64(minor)
-	} else {
-		mag = uint64(^minor) + 1
-	}
-
 	if places == 0 {
-		s := strconv.FormatUint(mag, 10)
-		if negative {
-			return "-" + s
-		}
-		return s
+		return strconv.FormatInt(minor, 10)
 	}
 
-	scale := uint64(1)
-	for i := 0; i < places; i++ {
-		scale *= 10
+	s := strconv.FormatInt(minor, 10)
+	negative := false
+	if s[0] == '-' {
+		negative = true
+		s = s[1:]
 	}
-	whole := mag / scale
-	frac := mag % scale
-	s := strconv.FormatUint(whole, 10) + "." + fmt.Sprintf("%0*d", places, frac)
+	for len(s) <= places {
+		s = "0" + s
+	}
+	s = s[:len(s)-places] + "." + s[len(s)-places:]
 	if negative {
 		return "-" + s
 	}
@@ -108,23 +98,14 @@ func ParseMinor(amount string, cc CurrencyCode) (int64, error) {
 	}
 
 	digits := whole + frac
-	u, err := strconv.ParseUint(digits, 10, 64)
+	if sign < 0 && digits != "0" {
+		digits = "-" + digits
+	}
+	n, err := strconv.ParseInt(digits, 10, 64)
 	if err != nil {
 		return 0, fmt.Errorf("iso4217: invalid amount %q: %w", amount, err)
 	}
-	if sign < 0 {
-		if u > uint64(math.MaxInt64)+1 {
-			return 0, fmt.Errorf("iso4217: invalid amount %q: value out of range", amount)
-		}
-		if u == uint64(math.MaxInt64)+1 {
-			return math.MinInt64, nil
-		}
-		return -int64(u), nil
-	}
-	if u > uint64(math.MaxInt64) {
-		return 0, fmt.Errorf("iso4217: invalid amount %q: value out of range", amount)
-	}
-	return int64(u), nil
+	return n, nil
 }
 
 func allDigits(s string) bool {
