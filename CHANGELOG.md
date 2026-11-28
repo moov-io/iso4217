@@ -1,5 +1,10 @@
 ## Unreleased
 
+IMPROVEMENTS
+
+- Add `All`, `Current` and `Withdrawn` helpers
+- Add `FormatMinor` and `ParseMinor` helpers for minor-unit amounts
+
 DOCUMENTATION
 
 - Fix README header links and the Slack badge

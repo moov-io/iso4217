@@ -67,6 +67,10 @@ func main() {
 	fmt.Println(iso4217.USD.Valid())           // true
 	fmt.Println(iso4217.JPY.DecimalPlaces)     // 0
 	fmt.Println(iso4217.BHD.DecimalPlaces)     // 3
+
+	fmt.Println(iso4217.FormatMinor(123456, iso4217.USD)) // 1234.56
+	fmt.Println(iso4217.FormatMinor(123456, iso4217.JPY)) // 123456
+	fmt.Println(iso4217.FormatMinor(123456, iso4217.BHD)) // 123.456
 }
 ```
 
@@ -74,7 +78,9 @@ The package also exports a `CurrencyCode` constant for each code in the table (f
 
 `CurrencyCode.Valid` reports whether `Lookup` finds the `Code` field. It does not require a canonical, fully populated struct. `CurrencyCode{Code: "usd"}.Valid()` and `CurrencyCode{Code: "840"}.Valid()` are true, but `Name` and `DecimalPlaces` stay empty on those values. Call `Lookup` when you need the table entry.
 
-`DecimalPlaces` is the ISO 4217 minor unit. To format an integer amount in minor units, divide by 10^DecimalPlaces (123456 with USD is `"1234.56"`; with JPY, `"123456"`; with BHD, `"123.456"`).
+`All` returns every currency in the table, one entry per alphabetic code, sorted by code. `CurrencyCode.Current` is true for official ISO 4217 List One codes. `CurrencyCode.Withdrawn` is true for the historic List Three codes that the table retains (ANG, BGN, CUC, HRK, SLL and ZWL). CNH is neither current nor withdrawn.
+
+`DecimalPlaces` is the ISO 4217 minor unit. `FormatMinor` and `ParseMinor` convert between an integer amount in minor units and a decimal string that uses `DecimalPlaces` (123456 with USD is `"1234.56"`; with JPY, `"123456"`; with BHD, `"123.456"`).
 
 Runnable examples are in [example_test.go](example_test.go).
 

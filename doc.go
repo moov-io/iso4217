@@ -32,4 +32,11 @@
 // CurrencyCode.Valid reports whether Lookup finds the Code field. A value can be
 // valid and still have an empty Name when the caller constructs CurrencyCode
 // with only Code set. Use Lookup to get the canonical table entry.
+//
+// All returns every currency in the table, one entry per alphabetic code.
+// CurrencyCode.Current is true for official List One codes. CurrencyCode.Withdrawn
+// is true for the retained List Three codes. CNH is neither current nor withdrawn.
+//
+// FormatMinor and ParseMinor convert between integer minor units and a decimal
+// string that uses CurrencyCode.DecimalPlaces.
 package iso4217

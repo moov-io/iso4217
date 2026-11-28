@@ -29,6 +29,10 @@ func (cc CurrencyCode) String() string {
 	return cc.Code
 }
 
+// Valid reports whether Lookup finds the Code field. The method uses the same
+// input rules as Lookup, so a non-canonical Code such as "usd" or "840" is
+// valid. Valid does not populate Name or DecimalPlaces; call Lookup for the
+// table entry.
 func (cc CurrencyCode) Valid() bool {
 	_, exists := Lookup(cc.Code)
 	return exists
