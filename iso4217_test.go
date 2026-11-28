@@ -73,8 +73,9 @@ func TestNumericCode532IsXCG(t *testing.T) {
 }
 
 // Withdrawn predecessors are deliberately retained for historical lookups.
+// VES remains on official List One alongside VED; it is not withdrawn.
 func TestWithdrawnPredecessorsRetained(t *testing.T) {
-	for _, code := range []string{"SLL", "VES", "ANG"} {
+	for _, code := range []string{"SLL", "VES", "ANG", "BGN"} {
 		_, exists := iso4217.Lookup(code)
 		assert.Truef(t, exists, "Lookup(%q)", code)
 	}
@@ -92,6 +93,12 @@ func TestCurrencyCodeString(t *testing.T) {
 func TestCurrencyCodeValid(t *testing.T) {
 	assert.True(t, iso4217.USD.Valid())
 	assert.True(t, iso4217.EUR.Valid())
+
+	// Valid follows Lookup rules: non-canonical input is valid, but the struct
+	// is not the canonical table entry.
+	assert.True(t, iso4217.CurrencyCode{Code: "usd"}.Valid())
+	assert.True(t, iso4217.CurrencyCode{Code: "840"}.Valid())
+	assert.Equal(t, "usd", iso4217.CurrencyCode{Code: "usd"}.String())
 
 	// Zero-value and unknown codes are invalid.
 	assert.False(t, iso4217.CurrencyCode{}.Valid())

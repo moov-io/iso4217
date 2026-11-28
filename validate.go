@@ -22,10 +22,11 @@ import (
 	"strings"
 )
 
-// Lookup returns the corresponding ISO 4217 CurrencyCode for a numeric or alphanumeric code, and a
-// boolean indicating whether a match was found.
+// Lookup returns the ISO 4217 CurrencyCode for an alphabetic or numeric code,
+// and a boolean that is true when the table contains a match.
 //
-// Example: "USD"
+// The function trims surrounding whitespace, ignores case and pads short
+// numeric input with leading zeros. Examples: "USD", "usd", "840", "36", "036", "8".
 func Lookup(code string) (CurrencyCode, bool) {
 	cc, exists := lookupTable[normalize(code)]
 	return cc, exists

@@ -53,4 +53,12 @@ func TestValidate(t *testing.T) {
 	cc, exists = iso4217.Lookup("036")
 	assert.True(t, exists)
 	assert.Equal(t, "AUD", cc.Code)
+
+	cc, exists = iso4217.Lookup("8")
+	assert.True(t, exists)
+	assert.Equal(t, "ALL", cc.Code)
+
+	cc, exists = iso4217.Lookup("  usd  ")
+	assert.True(t, exists)
+	assert.Equal(t, "USD", cc.Code)
 }
